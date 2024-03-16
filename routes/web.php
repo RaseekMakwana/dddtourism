@@ -23,7 +23,6 @@ use App\Http\Controllers\Site\RentBicycleController;
 use App\Http\Controllers\Site\RentBikeController;
 use App\Http\Controllers\Site\SportFacilitiesController;
 use App\Http\Controllers\Site\TentsController;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
