@@ -23,6 +23,7 @@ use App\Http\Controllers\Site\RentBicycleController;
 use App\Http\Controllers\Site\RentBikeController;
 use App\Http\Controllers\Site\SportFacilitiesController;
 use App\Http\Controllers\Site\TentsController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ use App\Http\Controllers\Site\TentsController;
 |
 */
 
+Artisan::call('storage:link');
 Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
 Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.place.to.visit');
 Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.facilities');
