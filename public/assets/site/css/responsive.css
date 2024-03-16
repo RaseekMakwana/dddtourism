@@ -1,0 +1,632 @@
+@media only screen and (max-width:991px) {
+.navbar-toggler {
+    line-height: 1;
+    padding: 0;
+    border-radius: 0;
+}
+.navbar-toggler.menu-icon {
+    width: 40px;
+    padding:0;
+    cursor: pointer;
+    position: relative;
+    border:0px;
+    margin-right: 15px;
+}
+.navbar-toggler.menu-icon span {
+    width: 100%;
+    height: 4px;
+    display: block;
+    background-color: #fff;
+    margin: 6px 0;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.navbar-toggler.menu-icon.active span {
+    position: absolute;
+    top: calc(50% - 8px);
+}
+.navbar-toggler.menu-icon.active span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+.navbar-toggler.menu-icon.active span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+.navbar-toggler.menu-icon.active span:nth-child(2) {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    display: none;
+} 
+
+.header.active {
+    background: #000;
+}
+
+.header {
+    padding: 15px 0px;
+}
+
+.navbar {
+    align-items: center;
+}
+
+.navbar .navbar-brand {
+    width:75%;
+    padding-left: 15px;
+}
+
+.navbar-light .navbar-nav li {
+    margin: 0px !important;
+    text-align: center;
+    padding: 0px 15px;
+}
+
+.navbar-light .navbar-nav .nav-item.lang {
+    display: inline-block;
+    width: auto ;
+    padding:10px 15px;
+}
+
+.navbar-light .navbar-nav .nav-item.mlast {
+    display: none;    
+}
+
+.navbar-light .navbar-nav .nav-item.cbox.pink .nav-link {
+    margin-bottom: 10px;
+}
+
+.navbar-light .navbar-brand {
+    padding-left: 15px;
+}
+
+.navbar-light .navbar-brand img {
+    max-height: 70px;
+}
+
+}
+
+@media only screen and (max-width:767px) {
+.flush-xs {
+    padding-right: 0px;
+    padding-left: 0px;
+} 
+
+.visible-xs {
+    display: inline-block;
+}
+
+.xs-100 {
+    width: 100%;
+}
+
+.underlined::after {
+    left: 50%;
+    margin-left: -35px;
+    width: 70px;
+}
+
+.row-eq-height {
+    display:inline-block;
+}
+
+.banner .logo img {
+    max-height: 80px;
+    margin-top: 40px;
+}
+    
+.banner h2 {
+    font-size: 34px;
+    text-align: center;
+}
+
+.info h3 {
+    font-size: 21px;
+}
+
+h2 {
+    font-size: 39px;
+    line-height: 1.4;
+}
+
+.attraction-card {
+    margin-bottom: 15px;
+}
+
+.infomain .iframe iframe {
+    height: 235px !important;
+}
+
+.infomain .owl-theme .owl-nav [class*=owl-] {
+    left: -15px;
+}
+
+.infomain .owl-theme .owl-nav [class*=owl-].owl-next {
+    left: auto;
+    right: -15px;
+}
+
+.infomain .inf {
+    display: inline-block;
+    width: 100%;
+}
+
+.infomain .inf .box {
+    width: 48%;
+    text-align: center;
+    margin: 3px 1px;
+    display: inline-block;
+}
+
+.onlinebooking .logos img {
+    max-height: 80px;
+}
+
+.onlinebooking  {
+    padding-bottom: 40px;
+}
+
+.onlinebooking .spr {
+    padding: 0px 15px;
+}
+
+.onlinebooking .spr>div {
+}
+
+.onlinebooking h4 {
+    font-size: 12px;
+}
+
+.onlinebooking h5 br,
+.onlinebooking p br {
+    display: none;
+}
+
+.onlinebooking h5 {
+    font-size: 16px;
+}
+
+.onlinebooking p {
+    font-size: 16px;
+}
+
+.onlinebooking .submit {
+    width: 100%;
+}
+
+.social-gallery .dalign {
+    display: block !important;
+}
+
+h2 {
+    font-size: 35px;
+    line-height: 1.4;
+}
+
+.social-gallery h2 {
+    text-align: left;
+}
+
+.footer,.copyrights {
+    text-align: center !important;
+}
+
+.copyrights .text-right {
+    text-align: center !important;
+}
+
+.citizen-corner .card {
+    margin-bottom: 10px;
+}
+
+.footer .contact-details {
+    align-items: start;
+}
+
+.footer .contact-details p, .footer .contact-details a {
+    font-size: 16px;
+}
+
+.footer h3 {
+    margin-top: 25px;
+}
+
+
+.beach-details .info h2 {
+    font-size: 39px;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.beach-details .info p, .facilities .info p {
+    font-size: 13px;
+    line-height: 20px;
+    color: #000000;
+}
+
+
+ol.breadcrumb {
+    font-size: 11px;
+}
+
+.beach-details .infomain .iframe img {
+    margin-left: 0!important;
+    max-width: 100%;
+    right: 0;
+    position: relative;
+}
+
+.beach-details .infomain .col-12 {
+    margin-left: 0!important;
+}
+
+.beach-details .infomain .bg-black-op {
+    padding: 50px 0px;
+}
+
+.side-menu {
+    width: 100%;
+    padding-top: 60px;
+}
+
+.about-diu .bgs {
+    background-size: auto 100% !important;
+    padding: 105px 0px;
+}
+
+.about-diu .bgs p {
+    font-size: 15px;
+    line-height: 21px;
+}
+
+.about-diu h3 {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+
+.title2 h2 {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.title2 p {
+    font-size: 15px;
+    line-height: 21px;
+}
+
+.contact-info h3 {
+    font-size: 22px;
+    margin-top: 25px;
+}
+
+.contact-info .lts p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.contact-info .lts p br {
+    display: none;
+}
+
+.info-common .nav-tabs li {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.info-common .nav-tabs .nav-link {
+    font-size: 18px;
+}
+
+.head {
+    margin-top: 20px;
+}
+
+.info-common .tab-pane .bgs h4 {
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 23px;
+}
+
+.info-common .btns-green .nav-tabs .nav-link {
+    min-width: 137px;
+    font-size: 13px;
+}
+
+.popular-beaches.pltovisit .beach figure {
+    height: 220px;
+}
+
+.popular-beaches.pltovisit .beach.half figure {
+    height: 280px;
+}
+
+h3 {
+    font-size: 31px;
+}
+
+.logoins>img {
+    margin-right: 7px;
+    max-width: 52px;
+}
+
+.logoins h3 {
+    font-size: 30px;
+}
+
+.logoins h3 span {
+    font-size: 9px;
+}
+
+.popular-beaches.pltovisit .mtts {
+    margin-top: 80px;
+}
+
+.popular-beaches.pltovisit.forest p {
+    line-height: 21px;
+    font-size: 16px;
+}
+
+.popular-beaches.pltovisit.forest .beach h3 {
+    font-size: 28px;
+}
+
+.info-common.gallery .btns-green .nav-tabs .nav-link {
+    min-width: 137px;
+    font-size: 13px;
+}
+
+.info-common.gallery .gallerybox h4 {
+    font-size: 16px;
+}
+
+.info-common.gallery .gallerybox .align .date {
+    line-height: 40px;
+    font-size: 18px;
+}
+
+.pagi ul li {
+    margin-right: 0px;
+    margin-bottom: 7px;
+}
+
+.pagi ul li a {
+    font-size: 16px;
+    min-width: 38px;
+    line-height: 37px;
+}
+
+}
+
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+.citizen-corner .card {
+    margin-bottom: 10px;
+}
+
+.footer .contact-details {
+    align-items: start;
+}
+
+.footer h3 {
+    font-size: 19px;
+    margin-top: 20px;
+}
+
+.footer .contact-details p, .footer .contact-details a {
+    font-size: 17px;
+}
+
+.attraction-card h3 {
+    font-size: 22px;
+}
+
+.iconbox span {
+    font-size: 12px;
+}
+
+.infomain .inf .box .text {
+    line-height: 27px;
+    font-size: 12px;
+}
+
+.placetovisit {
+    background-size: 898px auto;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 1.4;
+}
+
+
+.social-gallery .dalign {
+}
+
+.social-gallery .dalign {
+    display: block !important;
+}
+
+.media-gallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.media-gallery .row {
+    margin-top: 0px !important;
+    margin: 0 auto;
+}
+
+.face-gallery {
+    display: none;
+}
+
+.twi-gallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.twi-gallery h2 {
+    margin-left: auto;
+    order: 3;
+}
+
+.twi-gallery .row {
+    margin-top: 0px !important;
+    margin: 0 auto;
+}
+
+.twi-gallery a {
+    padding: 0px 12px;
+}
+
+.blog .card {
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 1.5;
+}
+
+.popular-beaches .beach h6 {
+    font-size: 19px;
+}
+ 
+.beach-details .info p, .facilities .info p {
+    font-size: 17px;
+    line-height: 26px;
+    color: #000000;
+}
+
+.beach-details .infomain .iframe img {
+    max-width: 139%;
+    right: 33%;
+    position: relative;
+}
+
+.about-diu .bgs {
+    background-size: 100% 100% !important;
+    padding: 105px 50px;
+}
+
+.about-diu .bgs p {
+    font-size: 15px;
+    line-height: 21px;
+}
+
+.about-diu h3 {
+    font-size: 30px;
+}
+
+.info-common .nav-tabs .nav-link {
+    font-size: 17px;
+    line-height: 40px;
+}
+
+.info-common .nav-tabs .nav-link img {
+    margin-right: -3px;
+    max-width: 9px;
+}
+
+.info-common .tab-pane .bgs h4 {
+    font-size: 20px;
+}
+
+.info-common .tab-pane .bgs h4 br {
+}
+
+.info-common p {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.popular-beaches.pltovisit .beach figure {
+    height: 300px;
+}
+
+.popular-beaches.pltovisit .beach.half figure {
+    height: 350px;
+}
+
+.title2 h2 {
+    font-size: 58px;
+}
+
+.popular-beaches p {
+    line-height: 22px;
+    font-size: 17px;
+}
+
+.popular-beaches.pltovisit.forest p {
+    line-height: 21px;
+    font-size: 16px;
+}
+
+.popular-beaches.pltovisit .mtts {
+    margin-top: 100px;
+}
+
+.info-common.gallery .gallerybox h4 {
+    font-size: 16px;
+}
+
+.info-common.gallery .gallerybox .align .date {
+    line-height: 40px;
+    min-width: 64px;
+    font-size: 18px;
+}
+
+}
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+.navbar-light .navbar-brand img {
+    max-height: 71px;
+}
+
+
+.header .searchform input { 
+    min-width: 100px;
+}
+
+.placetovisit {
+    padding-bottom: 75px;
+}
+
+.iconbox span {
+    font-size: 13px;
+}
+
+
+.media-gallery .row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+
+.beach-details .infomain .iframe img {
+    max-width: 127%;
+    right: 27%;
+    position: relative;
+}
+
+.info-common.gallery .gallerybox h4 {
+    font-size: 17px;
+}
+
+.info-common.gallery .gallerybox .align .date {
+    line-height: 41px;
+    min-width: 68px;
+    font-size: 17px;
+}
+
+}
+
+@media only screen and (min-width: 1200px) {
+.container {
+    max-width: 1198px;
+}
+}
