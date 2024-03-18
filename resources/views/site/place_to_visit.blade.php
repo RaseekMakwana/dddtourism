@@ -24,6 +24,7 @@
         </div>
         <div class="row mt-4 spr">
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Beaches'][0]->type."/".$data['Beaches'][0]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Beaches'][0]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -31,8 +32,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Beaches'][1]->type."/".$data['Beaches'][1]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Beaches'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -40,8 +43,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Beaches'][2]->type."/".$data['Beaches'][2]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url('{{ asset('storage/place_to_visit/'.$data['Beaches'][2]->featured_image) }}') 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -49,8 +54,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Beaches'][3]->type."/".$data['Beaches'][3]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url('{{ asset('storage/place_to_visit/'.$data['Beaches'][3]->featured_image) }}') 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -58,8 +65,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Beaches'][4]->type."/".$data['Beaches'][4]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Beaches'][4]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -67,6 +76,7 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -81,6 +91,7 @@
         </div>
         <div class="row mtts spr">
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Forts'][0]->type."/".$data['Forts'][0]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Forts'][0]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -88,8 +99,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Forts'][1]->type."/".$data['Forts'][1]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Forts'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -97,6 +110,7 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -111,6 +125,7 @@
         </div>
         <div class="row mts spr pb-4">
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Churches'][0]->type."/".$data['Churches'][0]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Churches'][0]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -118,8 +133,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Churches'][1]->type."/".$data['Churches'][1]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Churches'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -127,6 +144,7 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -141,6 +159,7 @@
         </div>
         <div class="row mts spr">
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Diu Museums'][0]->type."/".$data['Diu Museums'][0]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Diu Museums'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -148,8 +167,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Diu Museums'][1]->type."/".$data['Diu Museums'][1]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Diu Museums'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -157,6 +178,7 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
         </div>
     </div>
@@ -192,6 +214,7 @@
         </div>
         <div class="row mt-4 pt-2 spr">
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Water Sport'][0]->type."/".$data['Water Sport'][0]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Water Sport'][0]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -199,8 +222,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Water Sport'][1]->type."/".$data['Water Sport'][1]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Water Sport'][1]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -208,8 +233,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-4 col-md-4 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Water Sport'][2]->type."/".$data['Water Sport'][2]->slug) }}">
                 <div class="beach hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Water Sport'][2]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -217,8 +244,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Water Sport'][3]->type."/".$data['Water Sport'][3]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Water Sport'][3]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -226,8 +255,10 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
             <div class="col-lg-6 col-md-6 col-12 text-center">
+                <a href="{{ url("diu/place-to-visit/".$data['Water Sport'][4]->type."/".$data['Water Sport'][4]->slug) }}">
                 <div class="beach half hover-animate">
                     <figure style="background: url({{ asset('storage/place_to_visit/'.$data['Water Sport'][4]->featured_image) }}) 50% 50% no-repeat; background-size: cover;">
                         <div class="details">
@@ -235,6 +266,7 @@
                         </div>
                     </figure>
                 </div>
+                </a>
             </div>
         </div>
     </div>

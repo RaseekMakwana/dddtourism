@@ -55,6 +55,10 @@
                                     <input type="text" class="form-control" name="english_title" id="english_title" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="english_title">Sort Description</label>
+                                    <input type="text" class="form-control" name="english_sort_content" id="english_sort_content" required>
+                                </div>
+                                <div class="form-group">
                                     <label>Description</label>
                                     <textarea class="form-control" rows="10" name="english_content" id="apply-ckeditor1" required></textarea>
                                 </div>
@@ -75,6 +79,10 @@
                                     <input type="text" class="form-control" name="gujarati_title" id="gujarati_title" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="gujarati_title">Sort Description</label>
+                                    <input type="text" class="form-control" name="gujarati_sort_content" id="gujarati_sort_content" required>
+                                </div>
+                                <div class="form-group">
                                     <label>Description</label>
                                     <textarea class="form-control" rows="10" name="gujarati_content" id="apply-ckeditor2" required></textarea>
                                 </div>
@@ -93,6 +101,10 @@
                                 <div class="form-group">
                                     <label for="hindi_title">Hindi Title</label>
                                     <input type="text" class="form-control" name="hindi_title" id="hindi_title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hindi_title">Sort Description</label>
+                                    <input type="text" class="form-control" name="hindi_sort_content" id="hindi_sort_content" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
