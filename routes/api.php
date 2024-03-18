@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\OtherFacilitiesController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\PlaceToVisitAdminController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Site\HospitalController;
 use App\Http\Controllers\Site\HotelsController;
 use App\Http\Controllers\Site\ParkingPlaceController;
 use App\Http\Controllers\Site\PetrolPumpController;
+use App\Http\Controllers\Site\PlaceToVisitController;
 use App\Http\Controllers\Site\PublicToiletsController;
 use App\Http\Controllers\Site\PublicWifiController;
 use App\Http\Controllers\Site\RentBicycleController;
@@ -41,6 +43,7 @@ Route::prefix("admin")->group(function(){
     Route::post('facilities/get-data', [OtherFacilitiesController::class, 'getData'])->name('api.admin.facilities.get.data');
     Route::post('hotel/get-data', [HotelController::class, 'getData'])->name('api.admin.hotel.get.data');
     Route::post('tent/get-data', [TentController::class, 'getData'])->name('api.admin.tent.get.data');
+    Route::post('place-to-visit/get-data', [PlaceToVisitAdminController::class, 'getData'])->name('api.admin.tent.get.data');
 });
 
 Route::prefix("site")->group(function(){

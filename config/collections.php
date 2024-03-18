@@ -21,6 +21,7 @@ return [
         'rent-a-bike' => 'Rent a Bike',
         'rent-a-bicycle' => 'Rent a Bicycle',
         'tent' => 'Tent'
-    ]
+    ],
+    'place_to_visit_category' => ['Beaches','Forts','Churches','Diu Museums','Water Sport']
 
 ];

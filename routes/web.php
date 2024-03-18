@@ -8,7 +8,10 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\OtherFacilitiesController;
+use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
+use App\Http\Controllers\Admin\PlaceToVisitAdminController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
 use App\Http\Controllers\Site\FacilitiesController;
 use App\Http\Controllers\Site\FrontPageController;
@@ -74,20 +77,28 @@ Route::prefix("admin")->group(function(){
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
         // POSTS
-        // Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');
-        // Route::get('posts/create', [PostsController::class, 'create'])->name('admin.posts.create');
-        // Route::post('posts/store', [PostsController::class, 'store'])->name('admin.posts.store');
-        // Route::get('posts/edit/{id}', [PostsController::class, 'edit'])->name('admin.posts.edit');
-        // Route::post('posts/update', [PostsController::class, 'update'])->name('admin.posts.update');
-        // Route::get('posts/destroy/{id}', [PostsController::class, 'destroy'])->name('admin.posts.destroy');
+        Route::get('posts', [PostsController::class, 'index'])->name('admin.posts.index');
+        Route::get('posts/create', [PostsController::class, 'create'])->name('admin.posts.create');
+        Route::post('posts/store', [PostsController::class, 'store'])->name('admin.posts.store');
+        Route::get('posts/edit/{id}', [PostsController::class, 'edit'])->name('admin.posts.edit');
+        Route::post('posts/update', [PostsController::class, 'update'])->name('admin.posts.update');
+        Route::get('posts/destroy/{id}', [PostsController::class, 'destroy'])->name('admin.posts.destroy');
 
         // PAGES
-        // Route::get('pages', [PagesController::class, 'index'])->name('admin.pages.index');
-        // Route::get('pages/create', [PagesController::class, 'create'])->name('admin.pages.create');
-        // Route::post('pages/store', [PagesController::class, 'store'])->name('admin.pages.store');
-        // Route::get('pages/edit/{id}', [PagesController::class, 'edit'])->name('admin.pages.edit');
-        // Route::post('pages/update', [PagesController::class, 'update'])->name('admin.pages.update');
-        // Route::get('pages/destroy/{id}', [PagesController::class, 'destroy'])->name('admin.pages.destroy');
+        Route::get('pages', [PagesController::class, 'index'])->name('admin.pages.index');
+        Route::get('pages/create', [PagesController::class, 'create'])->name('admin.pages.create');
+        Route::post('pages/store', [PagesController::class, 'store'])->name('admin.pages.store');
+        Route::get('pages/edit/{id}', [PagesController::class, 'edit'])->name('admin.pages.edit');
+        Route::post('pages/update', [PagesController::class, 'update'])->name('admin.pages.update');
+        Route::get('pages/destroy/{id}', [PagesController::class, 'destroy'])->name('admin.pages.destroy');
+
+        // PLACE TO VISIT
+        Route::get('place-to-visit', [PlaceToVisitAdminController::class, 'index'])->name('admin.place.visit.index');
+        Route::get('place-to-visit/create', [PlaceToVisitAdminController::class, 'create'])->name('admin.place.visit.create');
+        Route::post('place-to-visit/store', [PlaceToVisitAdminController::class, 'store'])->name('admin.place.visit.store');
+        Route::get('place-to-visit/edit/{id}', [PlaceToVisitAdminController::class, 'edit'])->name('admin.place.visit.edit');
+        Route::post('place-to-visit/update', [PlaceToVisitAdminController::class, 'update'])->name('admin.place.visit.update');
+        Route::get('place-to-visit/destroy/{id}', [PlaceToVisitAdminController::class, 'destroy'])->name('admin.place.visit.destroy');
 
         // CATEGORIES
         // Route::get('categories', [CategoriesController::class, 'index'])->name('admin.categories.index');

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Visibility;
 
 
-class PagesController extends Controller
+class PlaceToVisitAdminController extends Controller
 {
     use APIResponseTrait;
     /**
@@ -20,14 +20,16 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.index');
+        return view('admin.place_to_visit.index');
     }
 
-    public function getData(){
-        $dataPost = DB::table('pages')
-                ->select('pages.*')
-                ->select('pages.*')
-                ->orderBy('pages.updated_at', 'DESC')
+    public function getData(Request $request){
+        $inputs = $request->input();
+
+        $dataPost = DB::table('place_to_visit')
+                ->select('place_to_visit.*')
+                ->where('place_to_visit.state', $inputs['state'])
+                ->orderBy('place_to_visit.updated_at', 'DESC')
                 ->get();
 
         $response = [];
@@ -51,8 +53,8 @@ class PagesController extends Controller
      */
     public function create()
     {
-        $data['type'] = ['CMS Page','Custom Page','Custom URL'];
-        return view('admin.pages.create',compact('data'));
+        $data['visit_category'] = config('collections.place_to_visit_category');
+        return view('admin.place_to_visit.create',compact('data'));
     }
 
     /**
@@ -65,14 +67,13 @@ class PagesController extends Controller
         $filename = '';
         if($request->hasFile('featured_image')){
             $file = $request->file('featured_image');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = md5(time().rand()).'.'.$extenstion;
-            $file->move('storage/pages/', $filename);
+            $file->store('place_to_visit', 'public');
+            $filename = $file->hashName();
         }
 
         // Check slug
         $slug = Str::slug($inputs['english_title']);
-        $checkSlug = DB::table('pages')->where('slug',$slug)->first();
+        $checkSlug = DB::table('place_to_visit')->where('slug',$slug)->first();
         if($checkSlug){
             $slug = $checkSlug->slug.'-new';
         }
@@ -86,11 +87,12 @@ class PagesController extends Controller
             "gujarati_content" => $inputs['gujarati_content'],
             "hindi_content" => $inputs['hindi_content'],
             "type" => $inputs['type'],
-            "featured_image" => $filename
+            "featured_image" => $filename,
+            "state" => session('state')
         ];
-        DB::table("pages")->insert($insertable);
+        DB::table("place_to_visit")->insert($insertable);
 
-        return redirect()->route('admin.pages.index')->with('success_message', __('admin_messages.data_has_been_saved_successfully'));
+        return redirect('admin/place-to-visit')->with('success_message', __('admin_messages.data_has_been_saved_successfully'));
     }
 
     /**
@@ -106,9 +108,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        $data['type'] = ['CMS Page','Custom Page','Custom URL'];
-        $data['edit_record'] = DB::table('pages')->where('id',$id)->first();
-        return view('admin.pages.edit',compact('data'));
+        $data['visit_category'] = config('collections.place_to_visit_category');
+        $data['edit_record'] = DB::table('place_to_visit')->where('id',$id)->first();
+        return view('admin.place_to_visit.edit',compact('data'));
     }
 
     /**
@@ -118,22 +120,21 @@ class PagesController extends Controller
     {
         $inputs = $request->input();
 
-        $updatableRecord = DB::table('pages')->where('id',$inputs['hidden_record_id'])->first();
+        $updatableRecord = DB::table('place_to_visit')->where('id',$inputs['hidden_record_id'])->first();
 
         $filename = '';
         if($request->hasFile('featured_image')){
-            if (!empty($updatableRecord->featured_image) && Storage::disk('public')->exists('pages/'.$updatableRecord->featured_image)) {
-                Storage::disk('public')->delete('pages/'.$updatableRecord->featured_image);
+            if (!empty($updatableRecord->featured_image) && Storage::disk('public')->exists('place_to_visit/'.$updatableRecord->featured_image)) {
+                Storage::disk('public')->delete('place_to_visit/'.$updatableRecord->featured_image);
             }
 
             $file = $request->file('featured_image');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = md5(time().rand()).'.'.$extenstion;
-            $file->move('storage/pages/', $filename);
+            $file->store('place_to_visit', 'public');
+            $filename = $file->hashName();
         } else {
             $filename = $inputs['hidden_featured_image'];
-            if (empty($filename) && Storage::disk('public')->exists('pages/'.$updatableRecord->featured_image)) {
-                Storage::disk('public')->delete('pages/'.$updatableRecord->featured_image);
+            if (empty($filename) && Storage::disk('public')->exists('place_to_visit/'.$updatableRecord->featured_image)) {
+                Storage::disk('public')->delete('place_to_visit/'.$updatableRecord->featured_image);
             }
         }
 
@@ -149,8 +150,8 @@ class PagesController extends Controller
             "type" => $inputs['type'],
             "featured_image" => $filename
         ];
-        DB::table("pages")->where('id',$inputs['hidden_record_id'])->update($insertable);
-        return redirect()->route('admin.pages.index')->with('success_message', __('admin_messages.data_has_been_updated_successfully'));
+        DB::table("place_to_visit")->where('id',$inputs['hidden_record_id'])->update($insertable);
+        return redirect()->route('admin.place.visit.index')->with('success_message', __('admin_messages.data_has_been_updated_successfully'));
     }
 
     /**
@@ -158,12 +159,12 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
-        $Record = DB::table('pages')->where('id',$id)->first();
+        $Record = DB::table('place_to_visit')->where('id',$id)->first();
 
-        if (empty($filename) && Storage::disk('public')->exists('pages/'.$Record->featured_image)) {
-            Storage::disk('public')->delete('pages/'.$Record->featured_image);
+        if (Storage::disk('public')->exists('place_to_visit/'.$Record->featured_image)) {
+            Storage::disk('public')->delete('place_to_visit/'.$Record->featured_image);
         }
-        DB::table('pages')->where('id',$id)->delete();
-        return redirect()->route('admin.pages.index')->with('success_message', __('admin_messages.data_has_been_deleted_successfully'));
+        DB::table('place_to_visit')->where('id',$id)->delete();
+        return redirect()->route('admin.place.visit.index')->with('success_message', __('admin_messages.data_has_been_deleted_successfully'));
     }
 }

@@ -29,7 +29,7 @@
                     <i class="fas fa-circle nav-icon"></i>
                     <p> Categories </p>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a href="{{ url('admin/posts') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
@@ -41,7 +41,13 @@
                     <i class="fas fa-circle nav-icon"></i>
                     <p> Pages </p>
                 </a>
-            </li> --}}
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('admin/place-to-visit') }}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p> Place To Visit </p>
+                </a>
+            </li>
             <li class="nav-item ">
                 <a href="{{ url('admin/banner') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
