@@ -17,16 +17,16 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="screen-reader-access.html">SCREEN READER ACCESS</a>
+                                <a class="nav-link" href="{{ url('screen-reader-access') }}">SCREEN READER ACCESS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#skip-to-main-content" onclick="skipToMainContent()">SKIP TO MAIN CONTENT</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="site-map.html">SITE MAP</a>
+                                <a class="nav-link" href="#">SITE MAP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
+                                <a class="nav-link" href="{{ url('contact') }}">Contact</a>
                             </li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -50,13 +50,13 @@
                                 </form>
                             </li>
                             <li class="nav-item lang fts">
-                                <a class="nav-link" href="#">A-</a>
+                                <a class="nav-link" href="javascript:void(0)" onclick="decreaseFont();">A-</a>
                             </li>
                             <li class="nav-item lang">
-                                <a class="nav-link" href="#">A</a>
+                                <a class="nav-link" href="javascript:void(0)" onclick="resetFont();">A</a>
                             </li>
                             <li class="nav-item lang lts">
-                                <a class="nav-link" href="#">A+</a>
+                                <a class="nav-link" href="javascript:void(0)" onclick="increaseFont();">A+</a>
                             </li>
                             <li class="nav-item cbox pink">
                                 <a class="nav-link" href="#"></a>

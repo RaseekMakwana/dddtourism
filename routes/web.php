@@ -21,6 +21,7 @@ use App\Http\Controllers\Site\PublicToiletsController;
 use App\Http\Controllers\Site\PublicWifiController;
 use App\Http\Controllers\Site\RentBicycleController;
 use App\Http\Controllers\Site\RentBikeController;
+use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\SportFacilitiesController;
 use App\Http\Controllers\Site\TentsController;
 
@@ -38,6 +39,8 @@ use App\Http\Controllers\Site\TentsController;
 Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
 Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.place.to.visit');
 Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.facilities');
+Route::get('screen-reader-access', [SiteController::class, 'screenReaderAccess'])->name('site.screen.reader.access');
+Route::get('contact', [SiteController::class, 'contact'])->name('site.contact');
 
 Route::prefix("diu")->group(function(){
     Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
