@@ -3,6 +3,8 @@ $segment1 = request()->segment(1);
 $segment2 = request()->segment(2);
 $segment3 = request()->segment(3);
 ?>
+
+
 @if($data['banner_type'] == 'banner_with_center_content_position')
     @if(!empty($data['banner']))
     <section class="ghoghlabanner slidershow">

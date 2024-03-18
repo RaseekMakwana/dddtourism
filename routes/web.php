@@ -36,6 +36,7 @@ use App\Http\Controllers\Site\TentsController;
 |
 */
 
+
 Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
 Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.place.to.visit');
 Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.facilities');

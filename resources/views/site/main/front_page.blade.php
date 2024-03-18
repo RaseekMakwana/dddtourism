@@ -6,6 +6,19 @@
 @endsection
 
 @section('content')
+<section class="explorebuttons">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 inf text-center col-md-12 col-12">
+                <h4>Explore DNH & DD</h4>
+                <ul>
+                    <li><a href="#">Daman</a></li>
+                    <li><a href="{{ url('diu') }}">Diu</a></li>
+                    <li><a href="#">DNH</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
     <section class="info">
         <div class="container">
