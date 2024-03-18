@@ -2,7 +2,7 @@
 
 /*
     SQLyog
-    Copyright 2003-2006, Webyog
+    Copyright 2003-2014, Webyog
     http://www.webyog.com
 
     HTTP Tunneling Page
@@ -21,14 +21,29 @@ function yog_mysql_connect ($host, $port, $username, $password, $db_name="")
     switch (DB_EXTENSION)
     {
         case "mysql":
-            $ret = mysql_connect ($host.':'.$port, $username, $password);
+            if($port != 0){
+              //TCP-IP
+              $ret = mysql_connect ($host.':'.$port, $username, $password);
+            }
+            else{
+              //UDS. Here 'host' is the socket path
+              $ret = mysql_connect ($host, $username, $password);
+            }
+
             if (strlen ($db_name)!=0){
                 mysql_select_db("$db_name");
             }
             break;
         case "mysqli":
             $port=(int)$port;
-            $GLOBALS["___mysqli_ston"] = mysqli_connect($host, $username,  $password,$db_name, $port);
+            if($port != 0){
+              //TCP-IP
+              $GLOBALS["___mysqli_ston"] = mysqli_connect($host, $username,  $password,$db_name, $port);
+            }
+            else{
+              //UDS. Here 'host' is the socket path
+              $GLOBALS["___mysqli_ston"] = mysqli_connect(null, $username,  $password,$db_name, 0, $host);
+            }
             $ret=$GLOBALS["___mysqli_ston"];
             break;
     }
@@ -183,6 +198,7 @@ function yog_mysql_query ( $query, $db_link )
 
 function get_array_from_query($query, $db_link)
 {
+    static $start = false;
     $ret=array();
     $bool = mysqli_real_query ( $db_link, $query )or yog_mysql_error($db_link);
 
@@ -195,6 +211,12 @@ function get_array_from_query($query, $db_link)
 
     elseif ($bool) {
         do {
+            if ( ! $start && mysqli_more_results($db_link) ) {
+                mysqli_next_result($db_link);
+            }
+
+            $start = true;
+
             /* store first result set */
             $result = mysqli_store_result($db_link);
             $num_ar= mysqli_affected_rows($db_link);
@@ -212,7 +234,7 @@ function get_array_from_query($query, $db_link)
                 $temp_ar= array("result"=>$result, "ar"=>$num_ar);
                 array_push($ret, $temp_ar);
             }
-        } while (mysqli_next_result($db_link));
+        } while (mysqli_more_results($db_link));
 
         if (yog_mysql_errno($db_link)!=0) {
             $temp_ar= array("result"=>-1, "ar"=>$num_ar);
@@ -1176,13 +1198,13 @@ function convertxmlchars ( $string,$called_by="" )
     WriteLog ( "Enter convertxmlchars, called by".$called_by );
     WriteLog ( "Input: " . $string );
 
-    $result = $string;
+    $result = htmlentities($string);
 
-    $result = eregi_replace('&', '&amp;', $result);
-    $result = eregi_replace('<', '&lt;', $result);
-    $result = eregi_replace('>', '&gt;', $result);
-    $result = eregi_replace('\'', '&apos;', $result);
-    $result = eregi_replace('\"', '&quot;', $result);
+    // $result = preg_replace('&', '&amp;', $result);
+    // $result = preg_replace('<', '&lt;', $result);
+    // $result = preg_replace('>', '&gt;', $result);
+    // $result = preg_replace('\'', '&apos;', $result);
+    // $result = preg_replace('\"', '&quot;', $result);
 
     WriteLog ( "Output: " . $result );
     WriteLog ( "Exit convertxmlchars" );
@@ -1544,15 +1566,23 @@ define ( "XML_CHARSET", 7 );
 
 define ( "XML_LIBXML2_TEST_QUERY", 8);
 /* uncomment this line to create a debug log */
-//define ( "DEBUG", 1 );
+// define ( "DEBUG", 1 );
 
 /* version constant */
 /* You will need to change the version in processquery method too, where it shows: $versionheader = 'TunnelVersion:5.13.1' */
 
-define ( "tunnelversion", '8.05');
+define ( "tunnelversion", '11.5');
 define ( "tunnelversionstring", 'TunnelVersion:' );
 define ( "phpversionerror", 'PHP_VERSION_ERROR' );
 define ( "phpmoduleerror", 'PHP_MODULE_NOT_INSTALLED' );
+
+/* we stop all error reporting as we check for all sort of errors */
+WriteLog ( "" );
+if ( defined("DEBUG") )
+    error_reporting ( E_ALL );
+else
+    error_reporting ( 0 );
+set_time_limit ( 0 );
 
 if (!defined("MYSQLI_TYPE_BIT")) {
     define ( "MYSQLI_TYPE_BIT", 16);
@@ -1570,7 +1600,8 @@ if (!get_cfg_var("register_globals"))
 }
 
 /* we have to set the value to be off during runtime coz it does not work when magic_quotes_runtime = On is setin Php.ini */
-set_magic_quotes_runtime (0);
+if(get_magic_quotes_runtime())
+	set_magic_quotes_runtime (0);
 
 
 /* Check for the PHP_MYSQL/PHP_MYSQLI extension loaded */
@@ -1607,16 +1638,6 @@ $base           = 0;
 $query          = NULL;
 $libxml2_test_query  = NULL;
 $libxml2_is_base64 = 0;
-
-
-/* we stop all error reporting as we check for all sort of errors */
-WriteLog ( "" );
-if ( defined("DEBUG") )
-    error_reporting ( E_ALL );
-else
-    error_reporting ( 0 );
-
-set_time_limit ( 0 );
 
 
 /* we check if all the external libraries support i.e. expat and mysql in our case is built in or not */
