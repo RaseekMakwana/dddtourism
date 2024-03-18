@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-5 img text-center col-md-5 col-12">
                     <img src="{{ asset('assets/site/img/img-rauf.png') }}" alt="" />
-                    <h4>Shri. Praful Patel</h4>
+                    <h4>Shri. Praful Patel 1</h4>
                     <h6>Hon'ble Administrator<br />
                         <span>UT Administration of Dadra and Nagar<br /> Haveli and Daman and Diu</span>
                     </h6>
