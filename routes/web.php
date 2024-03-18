@@ -48,7 +48,7 @@ Route::get('contact', [SiteController::class, 'contact'])->name('site.contact');
 
 Route::prefix("diu")->group(function(){
     Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
-    Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.diu.place.to.visit');
+    Route::get('place-to-visit', [PlaceToVisitController::class, 'diuPlaceToVisit'])->name('site.diu.place.to.visit');
     Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.diu.facilities');
     Route::get('facilities/hotels', [HotelsController::class, 'index'])->name('site.diu.facilities.hotels');
     Route::get('facilities/hospitals', [HospitalController::class, 'index'])->name('site.diu.facilities.hospitals');

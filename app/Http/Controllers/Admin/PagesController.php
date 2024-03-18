@@ -26,7 +26,6 @@ class PagesController extends Controller
     public function getData(){
         $dataPost = DB::table('pages')
                 ->select('pages.*')
-                ->select('pages.*')
                 ->orderBy('pages.updated_at', 'DESC')
                 ->get();
 

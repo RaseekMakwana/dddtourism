@@ -15,7 +15,7 @@
                     <h1>Posts</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ url('admin/diu/posts/create') }}" type="button" class="btn btn-success btn-sm">Create</a>
+                    <a href="{{ url('admin/posts/create') }}" type="button" class="btn btn-success btn-sm">Create</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -40,9 +40,10 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Title</th>
+                                <th>English Title</th>
+                                <th>Gujarati Title</th>
+                                <th>Hindi Title</th>
                                 <th>Category</th>
-                                <th>Language</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
@@ -65,16 +66,15 @@
         "responsive": true,
         "ajax": {
             "url": axios.defaults.baseURL+"admin/posts/get-data",
-            "data": {},
+            "data": {
+                'state': '{{ session("state") }}'
+            },
             "type": "POST",
             "beforeSend": function (xhr) {},
             "dataSrc": "data",
         },
         "columnDefs": [
-            { "width": "1%", "targets": 0 }, // ID column width set to 20%
-            { "width": "60%", "targets": 1 }, // Name column width set to 40%
-            { "width": "30%", "targets": 1 }, // Name column width set to 40%
-            { "width": "10%", "targets": 1 }, // Name column width set to 40%
+            { "width": "1%", "targets": 6 }, // ID column width set to 20%
         ],
         "columns": [
             {
@@ -83,9 +83,10 @@
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
-            { 'data': 'title' },
+            { 'data': 'english_title' },
+            { 'data': 'gujarati_title' },
+            { 'data': 'hindi_title' },
             { 'data': 'category_name' },
-            { 'data': 'language' },
             { 'data': 'created_at' },
             {
                 'data': 'id',

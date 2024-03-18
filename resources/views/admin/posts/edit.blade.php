@@ -12,10 +12,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Post  {{ $data['edit_record']->title }}</h1>
+                    <h1>Edit Post | {{ $data['edit_record']->english_title }}</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ url('admin/diu/posts') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
+                    <a href="{{ url('admin/posts') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ url('admin/diu/posts/update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('admin/posts/update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @if (Session::has('error_message'))
                     <div class="alert alert-danger">
@@ -40,22 +40,68 @@
                     <input type="hidden" id="hidden_record_id" value="{{ $data['edit_record']->id }}" name="hidden_record_id">
 
                     <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-body">
-                                {{-- <div class="form-group">
-                                <label for="slug">Slug</label>
-                                <input type="text" class="form-control" id="slug" required>
-                            </div> --}}
-
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" class="form-control" name="title" id="title"
-                                        value="{{ $data['edit_record']->title }}" required>
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">English Contents</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-minus"></i>
+                                    </button>
                                 </div>
-
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="english_title">English Title</label>
+                                    <input type="text" class="form-control" name="english_title" id="english_title"
+                                        value="{{ $data['edit_record']->english_title }}" required>
+                                </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="100" name="description" id="apply-ckeditor" required>{{ $data['edit_record']->description }}</textarea>
+                                    <textarea class="form-control" rows="100" name="english_content" id="apply-ckeditor1" required>{{ $data['edit_record']->english_content }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Gujarati Contents</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="gujarati_title">Gujarati Title</label>
+                                    <input type="text" class="form-control" name="gujarati_title" id="gujarati_title"
+                                        value="{{ $data['edit_record']->gujarati_title }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="100" name="gujarati_content" id="apply-ckeditor2" required>{{ $data['edit_record']->gujarati_content }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Hindi Contents</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="hindi_title">Hindi Title</label>
+                                    <input type="text" class="form-control" name="hindi_title" id="hindi_title"
+                                        value="{{ $data['edit_record']->hindi_title }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="100" name="hindi_content" id="apply-ckeditor3" required>{{ $data['edit_record']->hindi_content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +186,9 @@
 @section('page_link_and_javascripts')
     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('apply-ckeditor');
+        CKEDITOR.replace('apply-ckeditor1');
+        CKEDITOR.replace('apply-ckeditor2');
+        CKEDITOR.replace('apply-ckeditor3');
     </script>
 
     <script>

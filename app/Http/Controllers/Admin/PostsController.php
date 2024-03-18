@@ -23,10 +23,14 @@ class PostsController extends Controller
         return view('admin.posts.index');
     }
 
-    public function getData(){
+    public function getData(Request $request){
+
+        $inputs = $request->input();
+
         $dataPost = DB::table('posts')
                 ->select('posts.*', 'c.category_name')
                 ->leftJoin('categories as c', 'c.id', '=', 'posts.category_id')
+                ->where('state', $inputs['state'])
                 ->orderBy('posts.updated_at', 'DESC')
                 ->get();
 
@@ -34,9 +38,10 @@ class PostsController extends Controller
         foreach($dataPost as $items){
             $data = [
                 'id' => $items->id,
-                'title' => $items->title,
+                'english_title' => $items->english_title,
+                'gujarati_title' => $items->gujarati_title,
+                'hindi_title' => $items->hindi_title,
                 'category_name' => $items->category_name,
-                'language' => $items->language,
                 'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
             ];
             $response[] = $data;
@@ -64,13 +69,12 @@ class PostsController extends Controller
         $filename = '';
         if($request->hasFile('featured_image')){
             $file = $request->file('featured_image');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = md5(time().rand()).'.'.$extenstion;
-            $file->move('storage/posts/', $filename);
+            $file->store('posts', 'public');
+            $filename = $file->hashName();
         }
 
         // Check slug
-        $slug = Str::slug($inputs['title']);
+        $slug = Str::slug($inputs['english_title']);
         $checkSlug = DB::table('posts')->where('slug',$slug)->first();
         if($checkSlug){
             $slug = $checkSlug->slug.'-new';
@@ -78,10 +82,15 @@ class PostsController extends Controller
 
         $insertable = [
             "slug" => $slug,
-            "title" => $inputs['title'],
-            "description" => $inputs['description'],
+            "english_title" => $inputs['english_title'],
+            "gujarati_title" => $inputs['gujarati_title'],
+            "hindi_title" => $inputs['hindi_title'],
+            "english_content" => $inputs['english_content'],
+            "gujarati_content" => $inputs['gujarati_content'],
+            "hindi_content" => $inputs['hindi_content'],
             "category_id" => $inputs['category_id'],
-            "featured_image" => $filename
+            "featured_image" => $filename,
+            "state"=> session('state')
         ];
         DB::table("posts")->insert($insertable);
 
@@ -123,9 +132,8 @@ class PostsController extends Controller
             }
 
             $file = $request->file('featured_image');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = md5(time().rand()).'.'.$extenstion;
-            $file->move('storage/posts/', $filename);
+            $file->store('posts', 'public');
+            $filename = $file->hashName();
         } else {
             $filename = $inputs['hidden_featured_image'];
             if (empty($filename) && Storage::disk('public')->exists('posts/'.$updatableRecord->featured_image)) {
@@ -136,10 +144,14 @@ class PostsController extends Controller
         // Check slug
 
         $insertable = [
-            "title" => $inputs['title'],
-            "description" => $inputs['description'],
+            "english_title" => $inputs['english_title'],
+            "gujarati_title" => $inputs['gujarati_title'],
+            "hindi_title" => $inputs['hindi_title'],
+            "english_content" => $inputs['english_content'],
+            "gujarati_content" => $inputs['gujarati_content'],
+            "hindi_content" => $inputs['hindi_content'],
             "category_id" => $inputs['category_id'],
-            "featured_image" => $filename
+            "featured_image" => $filename,
         ];
         DB::table("posts")->where('id',$inputs['hidden_record_id'])->update($insertable);
         return redirect()->route('admin.posts.index')->with('success_message', __('admin_messages.data_has_been_updated_successfully'));
