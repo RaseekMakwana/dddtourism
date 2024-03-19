@@ -11,8 +11,8 @@
         <div class="row">
             <nav aria-label="breadcrumb" class="ml-auto">
                 <ol class="breadcrumb mb-0 pb-0" style="background: none;">
-                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Places To Visit </li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">{{ __('messages.home') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('messages.places_to_visit') }}</li>
                 </ol>
             </nav>
         </div>

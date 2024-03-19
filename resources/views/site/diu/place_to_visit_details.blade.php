@@ -12,8 +12,8 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ url('diu/place-to-visit') }}">Places To Visit</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">{{ __('messages.home') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu/place-to-visit') }}">{{ __('messages.places_to_visit') }}</a></li>
                     {{-- <li class="breadcrumb-item"><a href="beaches.html">Beaches</a></li> --}}
                     <li class="breadcrumb-item active" aria-current="page">{{ $data['page_details']->english_title }}</li>
                 </ol>

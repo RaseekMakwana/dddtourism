@@ -22,6 +22,7 @@ class PlaceToVisitController extends Controller
     }
 
     public function diuPlaceToVisit(Request $request){
+        echo __('messages.home');
         $data['banner'] = DB::table('banner')->where(['category'=>'Place To Visit','state'=>ucfirst($this->segment1)])->get();
         $data['banner_type'] = "banner_with_center_content_position";
 
@@ -37,9 +38,8 @@ class PlaceToVisitController extends Controller
         $data['churches_box'] = DB::table('posts')->where('id','37')->where('state','Diu')->first();
         $data['museums_box'] = DB::table('posts')->where('id','38')->where('state','Diu')->first();
         $data['water_sport_box'] = DB::table('posts')->where('id','39')->where('state','Diu')->first();
-        // dd($data['Other']);
 
-        return view('site.place_to_visit',compact('data'));
+        return view('site.diu.place_to_visit',compact('data'));
     }
 
     public function placeToVisitDetails($section, $detailsPage){
