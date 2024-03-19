@@ -1,6 +1,6 @@
 @extends('site.layouts.master_diu')
 
-@section('title', $data['page_details']->english_title. ' | Places To Visit | Diu')
+@section('title','Places To Visit ')
 
 @section('page_link_and_styles')
 @endsection
