@@ -36,9 +36,9 @@
 									{{-- <li><a href="javascript:void(0)" onclick="preferredSiteLanguage('en')">ENGLISH</a></li>
 									<li><a href="javascript:void(0)" onclick="preferredSiteLanguage('hi')">HINDI</a></li>
 									<li><a href="javascript:void(0)" onclick="preferredSiteLanguage('gu')">GUJARATI</a></li> --}}
-									<li><a href="{{ url('preferred-site-language/en') }}">ENGLISH</a></li>
-									<li><a href="{{ url('preferred-site-language/hi') }}">HINDI</a></li>
-									<li><a href="{{ url('preferred-site-language/gu') }}">GUJARATI</a></li>
+									<li><a href="{{ url('set-language/en') }}">ENGLISH</a></li>
+									<li><a href="{{ url('set-language/hi') }}">HINDI</a></li>
+									<li><a href="{{ url('set-language/gu') }}">GUJARATI</a></li>
 								</ul>
 							</li>
                             <li class="nav-item">

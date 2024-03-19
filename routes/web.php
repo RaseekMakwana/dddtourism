@@ -46,7 +46,12 @@ Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.fac
 Route::get('screen-reader-access', [SiteController::class, 'screenReaderAccess'])->name('site.screen.reader.access');
 Route::get('contact', [SiteController::class, 'contact'])->name('site.contact');
 
-Route::prefix("diu")->group(function(){
+Route::get('/set-language/{locale}', function ($locale) {
+    session(['locale' => $locale]);
+    return back();
+})->name('setLanguage');
+
+Route::prefix("diu")->middleware(['preferred.language'])->group(function(){
     Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
     Route::get('place-to-visit', [PlaceToVisitController::class, 'diuPlaceToVisit'])->name('site.diu.place.to.visit');
     Route::get('place-to-visit/{section}/{details_page}', [PlaceToVisitController::class, 'placeToVisitDetails'])->name('site.diu.place.to.visit.detail');
