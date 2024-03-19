@@ -12,10 +12,10 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="places-to-visit.html">Places To Visit</a></li>
-                    <li class="breadcrumb-item"><a href="beaches.html">Beaches</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ghoghla Beach</li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu/place-to-visit') }}">Places To Visit</a></li>
+                    {{-- <li class="breadcrumb-item"><a href="beaches.html">Beaches</a></li> --}}
+                    <li class="breadcrumb-item active" aria-current="page">{{ $data['page_details']->english_title }}</li>
                 </ol>
             </nav>
         </div>
@@ -44,6 +44,7 @@
         <div class="row mt-5 spr">
             @foreach ($data['popular_page'] as $element)
                 <div class="col-lg-3 col-md-3 col-12 text-center">
+                    <a href="{{ url("diu/place-to-visit/".$element->type."/".$element->slug) }}">
                     <div class="beach hover-animate">
                         <figure style="background: url('{{ asset('storage/place_to_visit/'.$element->featured_image) }}') 50% 50% no-repeat; background-size: cover;">
                             <div class="details">
@@ -53,6 +54,7 @@
                         </figure>
                         <h6>{{ $element->english_title }}</h6>
                     </div>
+                </a>
                 </div>
             @endforeach
         </div>
