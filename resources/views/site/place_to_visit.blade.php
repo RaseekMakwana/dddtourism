@@ -1,4 +1,4 @@
-@extends('site.layouts.master')
+@extends('site.layouts.master_diu')
 
 @section('title','Diu Events - Welcome')
 
@@ -11,7 +11,7 @@
         <div class="row">
             <nav aria-label="breadcrumb" class="ml-auto">
                 <ol class="breadcrumb mb-0 pb-0" style="background: none;">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('diu') }}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Places To Visit </li>
                 </ol>
             </nav>

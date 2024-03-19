@@ -18,7 +18,7 @@ class PlaceToVisitController extends Controller
     public function index(){
         $data['banner'] = DB::table('banner')->where(['category'=>'Place To Visit','state'=>ucfirst($this->segment1)])->get();
         $data['banner_type'] = "banner_with_center_content_position";
-        return view('site.place_to_visit',compact('data'));
+        return view('site.diu.place_to_visit',compact('data'));
     }
 
     public function diuPlaceToVisit(Request $request){
@@ -49,6 +49,6 @@ class PlaceToVisitController extends Controller
         $data['page_details'] = DB::table('place_to_visit')->where('type',$section)->where('slug',$detailsPage)->where('state','Diu')->first();
         $data['popular_page'] = DB::table('place_to_visit')->where('type',$section)->whereNotIn('slug',[$detailsPage])->where('state','Diu')->get();
 
-        return view('site.place_to_visit_details',compact('data'));
+        return view('site.diu.place_to_visit_details',compact('data'));
     }
 }
