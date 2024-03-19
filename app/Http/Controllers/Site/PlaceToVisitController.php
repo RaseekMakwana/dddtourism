@@ -22,7 +22,6 @@ class PlaceToVisitController extends Controller
     }
 
     public function diuPlaceToVisit(Request $request){
-        echo __('messages.home');
         $data['banner'] = DB::table('banner')->where(['category'=>'Place To Visit','state'=>ucfirst($this->segment1)])->get();
         $data['banner_type'] = "banner_with_center_content_position";
 
