@@ -1,6 +1,6 @@
 @extends('site.layouts.master_diu')
 
-@section('title','Diu Events - Welcome')
+@section('title','Places To Visit - Diu')
 
 @section('page_link_and_styles')
 @endsection
