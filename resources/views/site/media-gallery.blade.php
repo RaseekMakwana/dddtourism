@@ -175,7 +175,7 @@
         var html = '';
         $.each(response, function(index, element) {
             html += '<div class="col-lg-4 col-md-4 col-12">';
-                html += '<a href="'+element.video_url+'" data-fancybox="gallery">';
+                html += '<a href="'+element.video_url+'" data-fancybox>';
                 html += '<div class="gallerybox">';
                 html += '<figure style="background: url('+element.featured_image+') 50% 50% no-repeat; background-size: cover;"></figure>';
                     html += '<div class="align">';
