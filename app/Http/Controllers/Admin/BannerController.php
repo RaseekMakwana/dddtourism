@@ -38,7 +38,7 @@ class BannerController extends Controller
                 'description' => $items->description,
                 'show_text' => $items->show_text,
                 'category' => $items->category,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }

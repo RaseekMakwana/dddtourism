@@ -37,7 +37,7 @@ class PagesController extends Controller
                 'gujarati_title' => $items->gujarati_title,
                 'hindi_title' => $items->hindi_title,
                 'type' => $items->type,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }

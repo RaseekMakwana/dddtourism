@@ -45,7 +45,7 @@ class HotelController extends Controller
                 'address' => $items->address,
                 'email' => $items->email,
                 'state' => $items->state,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }

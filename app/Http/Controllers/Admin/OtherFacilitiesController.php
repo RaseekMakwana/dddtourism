@@ -50,7 +50,7 @@ class OtherFacilitiesController extends Controller
                 'contact_number' => $items->contact_number,
                 'tab_option' => $items->tab_option,
                 'state' => $items->state,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }

@@ -36,7 +36,7 @@ class CategoriesController extends Controller
                 'id' => $items->id,
                 'category_name' => $items->category_name,
                 'parent_category_name' => $items->parent_category_name,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }

@@ -36,7 +36,7 @@ class VideoGalleryAdminController extends Controller
                 'gujarati_title' => $items->gujarati_title,
                 'event_date' => date("d-m-Y", strtotime($items->event_date)),
                 'video_type' => $items->type,
-                'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
+                'created_at' => date("d-m-Y", strtotime($items->created_at)),
             ];
             $response[] = $data;
         }
