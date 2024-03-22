@@ -15,7 +15,7 @@
                     <h1>Edit Category </h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ url('admin/diu/categories') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
+                    <a href="{{ url('admin/categories') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -25,7 +25,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ url('admin/diu/categories/update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('admin/categories/update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @if (Session::has('error_message'))
                     <div class="alert alert-danger">

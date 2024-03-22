@@ -444,9 +444,6 @@
         </div>
     </section>
 
-    @include('site.layouts.includes.media_gallery_social_media_section')
-    @include('site.layouts.includes.blogs')
-    @include('site.layouts.includes.citizen_corner')
 
 @endsection
 

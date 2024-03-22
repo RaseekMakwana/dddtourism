@@ -46,7 +46,7 @@ class AuthenticationController extends Controller
                 return redirect()->intended('admin/dashboard');
             } else {
                 $request->session()->flash('error_message', __("admin_messages.invalid_username_and_password"));
-                return redirect()->route('admin.login');
+                return redirect()->route('admin');
             }
         }
     }

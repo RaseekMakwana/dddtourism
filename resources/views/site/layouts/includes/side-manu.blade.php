@@ -9,7 +9,7 @@
             <li class=""><a href="{{ url('diu/facilities') }}"><img src="{{ asset('assets/site/img/menu-icon-6.png') }}" alt="" /> FACILITES</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-7.png') }}" alt="" /> EVENTS</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-8.png') }}" alt="" /> TENDER/CIRCULARS</a></li>
-            <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-9.png') }}" alt="" /> MEDIA GALLERY</a></li>
+            <li class=""><a href="{{ url('diu/media-gallery') }}"><img src="{{ asset('assets/site/img/menu-icon-9.png') }}" alt="" /> MEDIA GALLERY</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-10.png') }}" alt="" /> CITIZEN CORNER</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-11.png') }}" alt="" /> CONTACT US</a></li>
         </ul>

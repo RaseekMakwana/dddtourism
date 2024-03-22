@@ -9,14 +9,17 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\OtherFacilitiesController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\PhotoGalleryAdminController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
 use App\Http\Controllers\Admin\PlaceToVisitAdminController;
+use App\Http\Controllers\Admin\VideoGalleryAdminController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
 use App\Http\Controllers\Site\FacilitiesController;
 use App\Http\Controllers\Site\FrontPageController;
 use App\Http\Controllers\Site\HospitalController;
 use App\Http\Controllers\Site\HotelsController;
+use App\Http\Controllers\Site\MediaGalleryController;
 use App\Http\Controllers\Site\ParkingPlaceController;
 use App\Http\Controllers\Site\PetrolPumpController;
 use App\Http\Controllers\Site\PlaceToVisitController;
@@ -40,34 +43,41 @@ use App\Http\Controllers\Site\TentsController;
 */
 
 
-Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
-Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.place.to.visit');
-Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.facilities');
-Route::get('screen-reader-access', [SiteController::class, 'screenReaderAccess'])->name('site.screen.reader.access');
-Route::get('contact', [SiteController::class, 'contact'])->name('site.contact');
+Route::middleware(['preferred.language'])->group(function(){
+    Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
+    Route::get('place-to-visit', [PlaceToVisitController::class, 'index'])->name('site.place.to.visit');
+    Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.facilities');
+    Route::get('screen-reader-access', [SiteController::class, 'screenReaderAccess'])->name('site.screen.reader.access');
+    Route::get('contact', [SiteController::class, 'contact'])->name('site.contact');
 
-Route::get('/set-language/{locale}', function ($locale) {
-    session(['locale' => $locale]);
-    return back();
-})->name('setLanguage');
+    Route::get('/set-language/{locale}', function ($locale) {
+        session(['locale' => $locale]);
+        return back();
+    })->name('setLanguage');
 
-Route::prefix("diu")->middleware(['preferred.language'])->group(function(){
-    Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
-    Route::get('place-to-visit', [PlaceToVisitController::class, 'diuPlaceToVisit'])->name('site.diu.place.to.visit');
-    Route::get('place-to-visit/{section}/{details_page}', [PlaceToVisitController::class, 'placeToVisitDetails'])->name('site.diu.place.to.visit.detail');
-    Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.diu.facilities');
-    Route::get('facilities/hotels', [HotelsController::class, 'index'])->name('site.diu.facilities.hotels');
-    Route::get('facilities/hospitals', [HospitalController::class, 'index'])->name('site.diu.facilities.hospitals');
-    Route::get('facilities/bars-and-liquor-shops', [BarsAndLiquorShopsController::class, 'index'])->name('site.diu.facilities.bars.and.liquor.shops');
-    Route::get('facilities/petrol-pump', [PetrolPumpController::class, 'index'])->name('site.diu.facilities.petrol.pump');
-    Route::get('facilities/parking-places', [ParkingPlaceController::class, 'index'])->name('site.diu.facilities.parking_places');
-    Route::get('facilities/public-toilets', [PublicToiletsController::class, 'index'])->name('site.diu.facilities.public.toilets');
-    Route::get('facilities/sport-facilities', [SportFacilitiesController::class, 'index'])->name('site.diu.facilities.sport.facilities');
-    Route::get('facilities/rent-a-bicycle', [RentBicycleController::class, 'index'])->name('site.diu.facilities.rent.a.bicycle');
-    Route::get('facilities/public-wifi', [PublicWifiController::class, 'index'])->name('site.diu.facilities.free.public.wifi');
-    Route::get('facilities/rent-a-bike', [RentBikeController::class, 'index'])->name('site.diu.facilities.rent.a.bike');
-    Route::get('facilities/tents', [TentsController::class, 'index'])->name('site.diu.facilities.tent');
-    Route::get('facilities/e-bus-schedule', [FacilitiesController::class, 'facilitiesEBusSchedule'])->name('site.diu.facilities.e.bus.schedule');
+    Route::prefix("diu")->group(function(){
+        Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
+
+        Route::get('place-to-visit', [PlaceToVisitController::class, 'diuPlaceToVisit'])->name('site.diu.place.to.visit');
+        Route::get('place-to-visit/{section}/{details_page}', [PlaceToVisitController::class, 'placeToVisitDetails'])->name('site.diu.place.to.visit.detail');
+
+        Route::get('media-gallery', [MediaGalleryController::class, 'pageMediaGallery'])->name('site.diu.media.gallery');
+        Route::get('media-gallery-detail/{id}', [MediaGalleryController::class, 'photoGalleryDetail'])->name('site.diu.media.gallery.details');
+
+        Route::get('facilities', [FacilitiesController::class, 'index'])->name('site.diu.facilities');
+        Route::get('facilities/hotels', [HotelsController::class, 'index'])->name('site.diu.facilities.hotels');
+        Route::get('facilities/hospitals', [HospitalController::class, 'index'])->name('site.diu.facilities.hospitals');
+        Route::get('facilities/bars-and-liquor-shops', [BarsAndLiquorShopsController::class, 'index'])->name('site.diu.facilities.bars.and.liquor.shops');
+        Route::get('facilities/petrol-pump', [PetrolPumpController::class, 'index'])->name('site.diu.facilities.petrol.pump');
+        Route::get('facilities/parking-places', [ParkingPlaceController::class, 'index'])->name('site.diu.facilities.parking_places');
+        Route::get('facilities/public-toilets', [PublicToiletsController::class, 'index'])->name('site.diu.facilities.public.toilets');
+        Route::get('facilities/sport-facilities', [SportFacilitiesController::class, 'index'])->name('site.diu.facilities.sport.facilities');
+        Route::get('facilities/rent-a-bicycle', [RentBicycleController::class, 'index'])->name('site.diu.facilities.rent.a.bicycle');
+        Route::get('facilities/public-wifi', [PublicWifiController::class, 'index'])->name('site.diu.facilities.free.public.wifi');
+        Route::get('facilities/rent-a-bike', [RentBikeController::class, 'index'])->name('site.diu.facilities.rent.a.bike');
+        Route::get('facilities/tents', [TentsController::class, 'index'])->name('site.diu.facilities.tent');
+        Route::get('facilities/e-bus-schedule', [FacilitiesController::class, 'facilitiesEBusSchedule'])->name('site.diu.facilities.e.bus.schedule');
+    });
 });
 
 
@@ -105,6 +115,22 @@ Route::prefix("admin")->group(function(){
         Route::get('place-to-visit/edit/{id}', [PlaceToVisitAdminController::class, 'edit'])->name('admin.place.visit.edit');
         Route::post('place-to-visit/update', [PlaceToVisitAdminController::class, 'update'])->name('admin.place.visit.update');
         Route::get('place-to-visit/destroy/{id}', [PlaceToVisitAdminController::class, 'destroy'])->name('admin.place.visit.destroy');
+
+        // PHOTO GALLERY
+        Route::get('photo-gallery', [PhotoGalleryAdminController::class, 'index'])->name('admin.photo.gallery.index');
+        Route::get('photo-gallery/create', [PhotoGalleryAdminController::class, 'create'])->name('admin.photo.gallery.create');
+        Route::post('photo-gallery/store', [PhotoGalleryAdminController::class, 'store'])->name('admin.photo.gallery.store');
+        Route::get('photo-gallery/edit/{id}', [PhotoGalleryAdminController::class, 'edit'])->name('admin.photo.gallery.edit');
+        Route::post('photo-gallery/update', [PhotoGalleryAdminController::class, 'update'])->name('admin.photo.gallery.update');
+        Route::get('photo-gallery/destroy/{id}', [PhotoGalleryAdminController::class, 'destroy'])->name('admin.photo.gallery.destroy');
+
+        // VIDEO GALLERY
+        Route::get('video-gallery', [VideoGalleryAdminController::class, 'index'])->name('admin.video.gallery.index');
+        Route::get('video-gallery/create', [VideoGalleryAdminController::class, 'create'])->name('admin.video.gallery.create');
+        Route::post('video-gallery/store', [VideoGalleryAdminController::class, 'store'])->name('admin.video.gallery.store');
+        Route::get('video-gallery/edit/{id}', [VideoGalleryAdminController::class, 'edit'])->name('admin.video.gallery.edit');
+        Route::post('video-gallery/update', [VideoGalleryAdminController::class, 'update'])->name('admin.video.gallery.update');
+        Route::get('video-gallery/destroy/{id}', [VideoGalleryAdminController::class, 'destroy'])->name('admin.video.gallery.destroy');
 
         // CATEGORIES
         // Route::get('categories', [CategoriesController::class, 'index'])->name('admin.categories.index');

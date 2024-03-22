@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Categories')
+@section('title', 'Video Gallery')
 
 @section('page_link_and_styles')
 @endsection
@@ -12,10 +12,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Categories</h1>
+                    <h1>Video Gallery</h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ url('admin/categories/create') }}" type="button" class="btn btn-success btn-sm">Create</a>
+                    <a href="{{ url('admin/video-gallery/create') }}" type="button" class="btn btn-success btn-sm">Create</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -40,8 +40,11 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Category Name</th>
-                                <th>Parent Category</th>
+                                <th>English Title</th>
+                                <th>Hindi Title</th>
+                                <th>Gujarati Title</th>
+                                <th>Type</th>
+                                <th>Event Data</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
@@ -63,7 +66,7 @@
         "bDestroy": true,
         "responsive": true,
         "ajax": {
-            "url": axios.defaults.baseURL+"admin/categories/get-data",
+            "url": axios.defaults.baseURL+"admin/video-gallery/get-data",
             "data": {},
             "type": "POST",
             "beforeSend": function (xhr) {},
@@ -71,9 +74,10 @@
         },
         "columnDefs": [
             { "width": "1%", "targets": 0 }, // ID column width set to 20%
-            { "width": "70%", "targets": 1 }, // Name column width set to 40%
             { "width": "20%", "targets": 1 }, // Name column width set to 40%
-            { "width": "10%", "targets": 1 }, // Name column width set to 40%
+            { "width": "20%", "targets": 2 }, // Name column width set to 40%
+            { "width": "20%", "targets": 3 }, // Name column width set to 40%
+            { "width": "1%", "targets": 7 }, // Name column width set to 40%
         ],
         "columns": [
             {
@@ -82,14 +86,18 @@
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
-            { 'data': 'category_name' },
-            { 'data': 'parent_category_name' },
+            { 'data': 'english_title' },
+            { 'data': 'hindi_title' },
+            { 'data': 'gujarati_title' },
+            { 'data': 'video_type' },
+            { 'data': 'event_date' },
+
             { 'data': 'created_at' },
             {
                 'data': 'id',
                 render: function ( data, type, row ) {
-                    var html = '<a href="{{ url("admin/categories/edit") }}/'+row.id+'" class="" ><i class="fas fa-edit"></i></a> | ';
-                        html += ' <a href="{{ url("admin/categories/destroy") }}/'+row.id+'" class="text-danger" onclick="return confirm(\'Are you sure you want to delete this record?\');"><i class="fa fa-trash"></i></a>';
+                    var html = '<a href="{{ url("admin/video-gallery/edit") }}/'+row.id+'" class="" ><i class="fas fa-edit"></i></a> | ';
+                        html += ' <a href="{{ url("admin/video-gallery/destroy") }}/'+row.id+'" class="text-danger" onclick="return confirm(\'Are you sure you want to delete this record?\');"><i class="fa fa-trash"></i></a>';
                     return html;
                 }
             },

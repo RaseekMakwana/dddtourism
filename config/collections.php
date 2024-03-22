@@ -4,7 +4,7 @@ return [
     // Dont touch
     "tent_type" => ['4 Star','3 Star'],
     "hotel_type" => ['5 Star','4 Star','3 Star','Homestay'],
-    "banner_category" => ['Front Page','Place To Visit','Facilities','Hotels','Hospitals','Bar And Liquor Shops','Petrol Pump','Parking Place','Public Toilets','Sport Facilities','Rent a Bicycle','Public Wifi','Rent a Bike','Tents','Other'],
+    "banner_category" => ['Default','Front Page','Place To Visit','Facilities','Hotels','Hospitals','Bar And Liquor Shops','Petrol Pump','Parking Place','Public Toilets','Sport Facilities','Rent a Bicycle','Public Wifi','Rent a Bike','Tents','Media Gallery'],
     "hospital_type" => ['Government Hospital','CHC & PHC Centres'],
     "bars_and_liquor_shop_type" => ['Family Restaurant & Bar','Bars And Liquor Shops'],
     "facilities_type" => ['Hotels','Hospitals','Liquor Shops','Parking Place','Petrol Pump','Public Toilets','Public Wifi','Sport Facilities','Rent a Bike','Rent a Bicycle','Tent','E-Bus Schedule'],

@@ -13,38 +13,33 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
-class HotelController extends Controller
+class PhotoGalleryAdminController extends Controller
 {
     use APIResponseTrait;
     /**
      * Display a listing of the resource.
      */
-    public $uploadDirectory = "facilities/";
+    public $uploadDirectory = "photo-gallery/";
 
     public function index()
     {
-        return view('admin.hotel.index');
+        return view('admin.photo_gallery.index');
     }
 
     public function getData(){
-        $dataPost = DB::table('hotels')
-                ->select('hotels.*')
-                ->orderBy('hotels.updated_at', 'DESC')
+        $dataPost = DB::table('photo_gallery')
+                ->select('photo_gallery.*')
+                ->orderBy('photo_gallery.updated_at', 'DESC')
                 ->get();
 
         $response = [];
         foreach($dataPost as $items){
             $data = [
                 'id' => $items->id,
-                'slug' => $items->slug,
-                'title' => $items->title,
-                'description' => $items->description,
-                'location_url' => $items->location_url,
-                'contact_number' => $items->contact_number,
-                'hotel_type' => $items->hotel_type,
-                'address' => $items->address,
-                'email' => $items->email,
-                'state' => $items->state,
+                'english_title' => $items->english_title,
+                'hindi_title' => $items->hindi_title,
+                'gujarati_title' => $items->gujarati_title,
+                'event_date' => date("d-m-Y", strtotime($items->event_date)),
                 'created_at' => date("d-m-Y h:i:A", strtotime($items->created_at)),
             ];
             $response[] = $data;
@@ -58,10 +53,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        $data['hotel_type'] = config('collections.hotel_type');
-        $data['facilities_type'] = DB::table('facilities_type')->get();
-        $data['state'] = ['Diu','Daman','DNH'];
-        return view('admin.hotel.create',compact('data'));
+        return view('admin.photo_gallery.create');
     }
 
     /**
@@ -70,36 +62,32 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->input();
-        $slug = Str::slug(strtolower(session('state').'-hotel'));
+
         $insertable = [
-            "slug" => $slug,
-            "state" => session('state'),
-            "hotel_type" => $inputs['hotel_type'],
-            "title" => $inputs['title'],
-            "description" => $inputs['description'],
-            "location_url" => $inputs['location_url'],
-            "contact_number" => $inputs['contact_number'],
-            "address" => $inputs['address'],
-            "email" => $inputs['email']
+            "english_title" => $inputs['english_title'],
+            "hindi_title" => $inputs['hindi_title'],
+            "gujarati_title" => $inputs['gujarati_title'],
+            "event_date" => $inputs['event_date'],
+            "state" => session('state')
         ];
-        $insertId = DB::table("hotels")->insertGetId($insertable);
+        $insertId = DB::table("photo_gallery")->insertGetId($insertable);
 
         // new_images[] MULTIPL IMAGE
         if(!empty($inputs['new_images'])){
             $imageData = $inputs['new_images'];
 
             foreach($imageData as $imageValue){
-                SELF::uploadDataStringImage($insertId, $slug, $imageValue);
+                SELF::uploadDataStringImage($insertId, $imageValue);
             }
         }
 
         // new_images[] MULTIPL IMAGE
         if(!empty($inputs['new_image_selected'])){
-            $filename = SELF::uploadDataStringImage($insertId, $slug, $inputs['new_image_selected'],1);
+            $filename = SELF::uploadDataStringImage($insertId, $inputs['new_image_selected'],1);
             $updatable = ['featured_image' => $filename];
-            DB::table("hotels")->where('id',$insertId)->update($updatable);
+            DB::table("photo_gallery")->where('id',$insertId)->update($updatable);
         }
-        return redirect()->route('admin.hotel.index')->with('success_message', __('admin_messages.data_has_been_saved_successfully'));
+        return redirect()->route('admin.photo.gallery.index')->with('success_message', __('admin_messages.data_has_been_saved_successfully'));
     }
 
     /**
@@ -116,9 +104,9 @@ class HotelController extends Controller
     public function edit($id)
     {
         $data['hotel_type'] = config('collections.hotel_type');
-        $data['gallery'] = DB::table('photo_gallery_details')->where(['type' => 'hotels', 'gallery_id' => $id, 'state' => session('state')])->get();
-        $data['edit_record'] = DB::table('hotels')->where('id',$id)->first();
-        return view('admin.hotel.edit',compact('data'));
+        $data['gallery'] = DB::table('photo_gallery_details')->where(['type' => 'photo_gallery', 'gallery_id' => $id, 'state' => session('state')])->get();
+        $data['edit_record'] = DB::table('photo_gallery')->where('id',$id)->first();
+        return view('admin.photo_gallery.edit',compact('data'));
     }
 
     /**
@@ -127,12 +115,13 @@ class HotelController extends Controller
     public function update(Request $request)
     {
         $inputs = $request->input();
-        $slug = Str::slug(strtolower(session('state').'-hotel'));
+        $slug = Str::slug(strtolower(session('state').'-photo-gallery'));
 
-        $updateData = DB::table('hotels')->where('id',$inputs['hidden_record_id'])->first();
+        $updateData = DB::table('photo_gallery')->where('id',$inputs['hidden_record_id'])->first();
 
         // removed_images[] REEMOVE MULTIPL IMAGE
         if(!empty($inputs['removed_images'])){
+
             $imageData = $inputs['removed_images'];
             foreach($imageData as $image){
                 $image = explode("~",$image);
@@ -140,8 +129,8 @@ class HotelController extends Controller
                     if (Storage::disk('public')->exists($this->uploadDirectory.$slug.'/'.$image[2])) {
                         Storage::disk('public')->delete($this->uploadDirectory.$slug.'/'.$image[2]);
                     }
-                    DB::table('photo_gallery_details')->where(['id'=>$image[0],'type' => 'hotels', 'gallery_id' => $updateData->id, 'state' => session('state')])->delete();
-                    DB::table('hotels')->where(['id'=>$updateData->id,'state' => session('state')])->update(['featured_image' => '']);
+                    DB::table('photo_gallery_details')->where('id', $image[1])->delete();
+                    DB::table('photo_gallery')->where(['id'=>$updateData->id,'state' => session('state')])->update(['featured_image' => '']);
                 }
             }
         }
@@ -152,7 +141,7 @@ class HotelController extends Controller
             foreach($imageData as $imageValue){
                 $image = explode("~",$imageValue);
                 if($image[0] != "old"){
-                    SELF::uploadDataStringImage($updateData->id, $slug, $imageValue);
+                    SELF::uploadDataStringImage($updateData->id, $imageValue);
                 }
             }
         }
@@ -161,30 +150,27 @@ class HotelController extends Controller
         if(!empty($inputs['new_image_selected'])){
             $image = explode("~",$inputs['new_image_selected']);
             if($image[0] == "old"){
-                DB::table('photo_gallery_details')->where(['type' => 'hotels', 'gallery_id' => $updateData->id, 'state' => session('state')])->update(['main_image' => '0']);
+                DB::table('photo_gallery_details')->where(['type' => 'photo_gallery', 'gallery_id' => $updateData->id, 'state' => session('state')])->update(['main_image' => '0']);
                 DB::table('photo_gallery_details')->where(['id'=>$image[1]])->update(['main_image' => '1']);
                 $updatable = ['featured_image' => $image[2]];
-                DB::table("hotels")->where('id',$updateData->id)->update($updatable);
+                DB::table("photo_gallery")->where('id',$updateData->id)->update($updatable);
             } else {
-                $filename = SELF::uploadDataStringImage($updateData->id, $slug, $inputs['new_image_selected'],1);
+                $filename = SELF::uploadDataStringImage($updateData->id, $inputs['new_image_selected'],1);
                 $updatable = ['featured_image' => $filename];
-                DB::table("hotels")->where('id',$updateData->id)->update($updatable);
+                DB::table("photo_gallery")->where('id',$updateData->id)->update($updatable);
             }
         }
 
 
         // Check slug
         $updatable = [
-            "hotel_type" => $inputs['hotel_type'],
-            "title" => $inputs['title'],
-            "description" => $inputs['description'],
-            "location_url" => $inputs['location_url'],
-            "contact_number" => $inputs['contact_number'],
-            "address" => $inputs['address'],
-            "email" => $inputs['email']
+            "english_title" => $inputs['english_title'],
+            "hindi_title" => $inputs['hindi_title'],
+            "gujarati_title" => $inputs['gujarati_title'],
+            "event_date" => $inputs['event_date'],
         ];
-        DB::table("hotels")->where('id',$inputs['hidden_record_id'])->update($updatable);
-        return redirect()->route('admin.hotel.index')->with('success_message', __('admin_messages.data_has_been_updated_successfully'));
+        DB::table("photo_gallery")->where('id',$inputs['hidden_record_id'])->update($updatable);
+        return redirect()->route('admin.photo.gallery.index')->with('success_message', __('admin_messages.data_has_been_updated_successfully'));
     }
 
     /**
@@ -192,19 +178,22 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        $slug = Str::slug(strtolower(session('state').'-hotel'));
-        $galleryData = DB::table('photo_gallery_details')->where(['type' => 'hotels', 'gallery_id' => $id, 'state' => session('state')])->get();
+        $slug = Str::slug(strtolower(session('state').'-photo-gallery'));
+        $galleryData = DB::table('photo_gallery_details')->where(['type' => 'photo_gallery', 'gallery_id' => $id, 'state' => session('state')])->get();
         foreach($galleryData as $element){
             if (Storage::disk('public')->exists($this->uploadDirectory.$slug.'/'.$element->filename)) {
                 Storage::disk('public')->delete($this->uploadDirectory.$slug.'/'.$element->filename);
             }
         }
-        DB::table('hotels')->where('id',$id)->delete();
-        DB::table('photo_gallery_details')->where(['type' => 'hotels', 'gallery_id' => $id, 'state' => session('state')])->delete();
-        return redirect()->route('admin.hotel.index')->with('success_message', __('admin_messages.data_has_been_deleted_successfully'));
+        DB::table('photo_gallery')->where('id',$id)->delete();
+        DB::table('photo_gallery_details')->where(['type' => 'photo_gallery', 'gallery_id' => $id, 'state' => session('state')])->delete();
+        return redirect()->route('admin.photo.gallery.index')->with('success_message', __('admin_messages.data_has_been_deleted_successfully'));
     }
 
-    public function uploadDataStringImage($galleryId, $slug, $imageValue, $isMain = 0){
+    public function uploadDataStringImage($galleryId, $imageValue, $isMain = 0){
+
+        $slug = Str::slug(strtolower(session('state').'-photo-gallery'));
+
         list($type, $imageValue) = explode(';', $imageValue);
         $type = explode('/',$type);
         $extension = end($type);
@@ -216,7 +205,7 @@ class HotelController extends Controller
         $insertable = [
             'slug' => $slug,
             'filename' => $fileName,
-            'type' => 'hotels',
+            'type' => 'photo_gallery',
             'gallery_id' => $galleryId,
             'state' => session('state'),
         ];

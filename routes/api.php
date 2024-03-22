@@ -5,13 +5,16 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\OtherFacilitiesController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\PhotoGalleryAdminController;
 use App\Http\Controllers\Admin\PlaceToVisitAdminController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
+use App\Http\Controllers\Admin\VideoGalleryAdminController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
 use App\Http\Controllers\Site\FacilitiesController;
 use App\Http\Controllers\Site\HospitalController;
 use App\Http\Controllers\Site\HotelsController;
+use App\Http\Controllers\Site\MediaGalleryController;
 use App\Http\Controllers\Site\ParkingPlaceController;
 use App\Http\Controllers\Site\PetrolPumpController;
 use App\Http\Controllers\Site\PlaceToVisitController;
@@ -43,7 +46,9 @@ Route::prefix("admin")->group(function(){
     Route::post('facilities/get-data', [OtherFacilitiesController::class, 'getData'])->name('api.admin.facilities.get.data');
     Route::post('hotel/get-data', [HotelController::class, 'getData'])->name('api.admin.hotel.get.data');
     Route::post('tent/get-data', [TentController::class, 'getData'])->name('api.admin.tent.get.data');
-    Route::post('place-to-visit/get-data', [PlaceToVisitAdminController::class, 'getData'])->name('api.admin.tent.get.data');
+    Route::post('place-to-visit/get-data', [PlaceToVisitAdminController::class, 'getData'])->name('api.admin.place.visit.get.data');
+    Route::post('photo-gallery/get-data', [PhotoGalleryAdminController::class, 'getData'])->name('api.admin.photo.gallery.get.data');
+    Route::post('video-gallery/get-data', [VideoGalleryAdminController::class, 'getData'])->name('api.admin.video.gallery.get.data');
 });
 
 Route::prefix("site")->group(function(){
@@ -58,4 +63,7 @@ Route::prefix("site")->group(function(){
     Route::post('facilities/public-wifi/get-data', [PublicWifiController::class, 'apiGetMasterData'])->name('api.site.facilities.publicwifi.getdata');
     Route::post('facilities/rent-a-bike/get-data', [RentBikeController::class, 'apiGetMasterData'])->name('api.site.facilities.rentabike.getdata');
     Route::post('facilities/tent/get-data', [TentsController::class, 'apiGetMasterData'])->name('api.site.facilities.tent.getdata');
+
+    Route::post('photo-gallery', [MediaGalleryController::class, 'apiGetPhotoGalleryData'])->name('api.site.photo.gallery');
+    Route::post('video-gallery', [MediaGalleryController::class, 'apiGetVideoGalleryData'])->name('api.site.video.gallery');
 });

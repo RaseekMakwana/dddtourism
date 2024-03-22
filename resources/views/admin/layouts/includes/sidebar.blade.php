@@ -42,18 +42,31 @@
                     <p> Pages </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ url('admin/place-to-visit') }}" class="nav-link">
-                    <i class="fas fa-circle nav-icon"></i>
-                    <p> Place To Visit </p>
-                </a>
-            </li>
             <li class="nav-item ">
                 <a href="{{ url('admin/banner') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
                     <p> Banners</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ url('admin/place-to-visit') }}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p> Place To Visit </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('admin/photo-gallery') }}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p>Photo Gallery</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('admin/video-gallery') }}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p>Video Gallery</p>
+                </a>
+            </li>
+
             <li class="nav-item ">
                 <a href="#" class="nav-link {{ (in_array($sagment3,['hospital','bars-and-liquor-shops','parking-slot','petrol-pump','public-toilet','public-wifi','sport-facility','rent-a-bike','rent-a-bicycle'])? "active" : "" )  }}">
                   <i class="nav-icon fas fa-circle"></i>

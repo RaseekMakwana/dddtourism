@@ -14,7 +14,11 @@ class PreferredLanguage
      */
     public function handle($request, Closure $next)
     {
-        $locale = session('locale', 'en');
+        if(empty(session('locale'))){
+            $locale = $request->session()->put('locale', 'en');
+        } else {
+            $locale = session('locale');
+        }
         app()->setLocale($locale);
         return $next($request);
     }
