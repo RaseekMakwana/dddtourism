@@ -332,10 +332,10 @@
                                 <p>A Perfect Getaway for Friends & Family</p>
                                 <div class="link" href="#">Click here</div>
                             </a>
-                            <a class="infs" href="#">
+                            <a class="infs" href="{{ url('diu/place-to-visit') }}">
                                 <h3>Diu</h3>
                                 <p>Incredible Diu is an island of Natural Beauty</p>
-                                <div class="link" href="#">Click here</div>
+                                <div class="link" href="{{ url('diu/place-to-visit') }}">Click here</div>
                             </a>
                             <a class="infs" href="#">
                                 <h3>DNH</h3>
