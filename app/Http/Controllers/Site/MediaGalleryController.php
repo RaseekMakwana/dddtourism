@@ -125,6 +125,7 @@ class MediaGalleryController extends Controller
                 $data["id"] = $item->id;
                 $data["title"] = $title;
                 $data["featured_image"] = $featured_image;
+                $data["video_url"] = $item->video_url;
                 $data["event_date"] = date("d", strtotime($item->event_date)).' '.substr(date("F", strtotime($item->event_date)),0,3);
                 $data["state"] = $item->state;
                 $response[] = $data;

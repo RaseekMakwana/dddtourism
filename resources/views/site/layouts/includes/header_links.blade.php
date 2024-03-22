@@ -10,4 +10,5 @@
 <link rel="stylesheet" href="{{ asset('assets/site/css/font-awesome.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/site/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/site/css/responsive.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/site/plugins/fancybox/fancybox.css') }}" />
 <title>@yield('title')</title>

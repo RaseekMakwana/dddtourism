@@ -7,6 +7,7 @@
 <script src="{{ asset('assets/common/js/axios.min.js') }}"></script>
 <script src="{{ asset('assets/site/js/custom.js') }}"></script>
 <script src="{{ asset('assets/site/js/site_custom.js') }}"></script>
+<script src="{{ asset('assets/site/plugins/fancybox/fancybox.js') }}"></script>
 <script>
     $(".item-inc").click(function(e){
         e.preventDefault(); // Prevent the default action of the link
