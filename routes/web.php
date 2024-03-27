@@ -32,6 +32,7 @@ use App\Http\Controllers\Site\RentBikeController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Site\SportFacilitiesController;
 use App\Http\Controllers\Site\TentsController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,9 @@ use App\Http\Controllers\Site\TentsController;
 |
 */
 
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 Route::middleware(['preferred.language'])->group(function(){
     Route::get('/', [FrontPageController::class, 'index'])->name('site.frontpage');
