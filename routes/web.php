@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\OtherFacilitiesController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
 use App\Http\Controllers\Admin\PlaceToVisitAdminController;
 use App\Http\Controllers\Admin\VideoGalleryAdminController;
+use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
 use App\Http\Controllers\Site\FacilitiesController;
 use App\Http\Controllers\Site\FrontPageController;
@@ -58,6 +60,7 @@ Route::middleware(['preferred.language'])->group(function(){
     Route::prefix("diu")->group(function(){
         Route::get('/', [FrontPageController::class, 'diuFrontPage'])->name('site.diu.index');
 
+        Route::get('about', [AboutController::class, 'diuAbout'])->name('site.diu.about');
         Route::get('place-to-visit', [PlaceToVisitController::class, 'diuPlaceToVisit'])->name('site.diu.place.to.visit');
         Route::get('place-to-visit/{section}/{details_page}', [PlaceToVisitController::class, 'placeToVisitDetails'])->name('site.diu.place.to.visit.detail');
 
@@ -133,12 +136,12 @@ Route::prefix("admin")->group(function(){
         Route::get('video-gallery/destroy/{id}', [VideoGalleryAdminController::class, 'destroy'])->name('admin.video.gallery.destroy');
 
         // CATEGORIES
-        // Route::get('categories', [CategoriesController::class, 'index'])->name('admin.categories.index');
-        // Route::get('categories/create', [CategoriesController::class, 'create'])->name('admin.categories.create');
-        // Route::post('categories/store', [CategoriesController::class, 'store'])->name('admin.categories.store');
-        // Route::get('categories/edit/{id}', [CategoriesController::class, 'edit'])->name('admin.categories.edit');
-        // Route::post('categories/update', [CategoriesController::class, 'update'])->name('admin.categories.update');
-        // Route::get('categories/destroy/{id}', [CategoriesController::class, 'destroy'])->name('admin.categories.destroy');
+        Route::get('categories', [CategoriesController::class, 'index'])->name('admin.categories.index');
+        Route::get('categories/create', [CategoriesController::class, 'create'])->name('admin.categories.create');
+        Route::post('categories/store', [CategoriesController::class, 'store'])->name('admin.categories.store');
+        Route::get('categories/edit/{id}', [CategoriesController::class, 'edit'])->name('admin.categories.edit');
+        Route::post('categories/update', [CategoriesController::class, 'update'])->name('admin.categories.update');
+        Route::get('categories/destroy/{id}', [CategoriesController::class, 'destroy'])->name('admin.categories.destroy');
 
         // FACILITIES
         Route::get('facilities/{module}', [OtherFacilitiesController::class, 'index'])->name('admin.facilities.index');

@@ -3,11 +3,7 @@
 			<div class="col-lg-12 xs-center p-0 col-md-12 col-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="navbar-brand">
-                        @if (Request::segment(1) == "diu")
-    						<a class="logo" href="{{ url('diu') }}"><img src="{{ asset('assets/site/img/logo.png') }}" alt=""/></a>
-                        @else
-	    					<a class="logo" href="{{ url('/') }}"><img src="{{ asset('assets/site/img/logo.png') }}" alt=""/></a>
-                        @endif
+                        <a class="logo" href="{{ url('/') }}"><img src="{{ asset('assets/site/img/logo.png') }}" alt=""/></a>
 					</div>
                     <button class="navbar-toggler menu-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class=""></span>

@@ -3,7 +3,7 @@
     $segment3 = request()->segment(3);
 @endphp
 
-@extends('site.layouts.master')
+@extends('site.layouts.master_diu')
 
 @section('title', 'Diu Events - Welcome')
 

@@ -2,7 +2,7 @@
     @if (Request::segment(1) == "diu")
         <ul class="main-menu zindex">
             <li class=""><a href="{{ url('/') }}"><img src="{{ asset('assets/site/img/menu-icon-1.png') }}" alt="" /> HOME</a></li>
-            <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-2.png') }}" alt="" /> ABOUT DIU</a></li>
+            <li class=""><a href="{{ url('diu/about') }}"><img src="{{ asset('assets/site/img/menu-icon-2.png') }}" alt="" /> ABOUT DIU</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-3.png') }}" alt="" /> ABOUT DEPARTMENT</a></li>
             <li class=""><a href="{{ url('diu/place-to-visit') }}"><img src="{{ asset('assets/site/img/menu-icon-4.png') }}" alt="" /> PLACES TO VISIT</a></li>
             <li class=""><a href="#"><img src="{{ asset('assets/site/img/menu-icon-5.png') }}" alt="" /> INS KHUKARI</a></li>
