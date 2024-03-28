@@ -36,6 +36,7 @@
                     <p> Posts </p>
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a href="{{ url('admin/pages') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
@@ -52,6 +53,12 @@
                 <a href="{{ url('admin/place-to-visit') }}" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
                     <p> Place To Visit </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('admin/top-attraction') }}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p> Top Attraction </p>
                 </a>
             </li>
             <li class="nav-item">

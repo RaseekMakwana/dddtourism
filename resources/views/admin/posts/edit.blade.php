@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="100" name="english_content" id="apply-ckeditor1" required>{{ $data['edit_record']->english_content }}</textarea>
+                                    <textarea class="form-control" rows="100" name="english_content" id="english_content" required>{{ $data['edit_record']->english_content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="100" name="gujarati_content" id="apply-ckeditor2" required>{{ $data['edit_record']->gujarati_content }}</textarea>
+                                    <textarea class="form-control" rows="100" name="gujarati_content" id="gujarati_content" required>{{ $data['edit_record']->gujarati_content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="100" name="hindi_content" id="apply-ckeditor3" required>{{ $data['edit_record']->hindi_content }}</textarea>
+                                    <textarea class="form-control" rows="100" name="hindi_content" id="hindi_content" required>{{ $data['edit_record']->hindi_content }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                             <div class="card-body" style="display: block;">
                                 <div class="form-group">
                                     {{-- <label>Categories</label> --}}
-                                    <select class="form-control" name="category_id">
+                                    <select class="form-control" name="category_id" required>
                                         <option value="">-- Select--</option>
                                         @foreach ($data['categories'] as $items)
                                             <option value="{{ $items->id }}"
@@ -186,9 +186,17 @@
 @section('page_link_and_javascripts')
     <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('apply-ckeditor1');
-        CKEDITOR.replace('apply-ckeditor2');
-        CKEDITOR.replace('apply-ckeditor3');
+        CKEDITOR.replace('english_content');
+        CKEDITOR.replace('gujarati_content');
+        CKEDITOR.replace('hindi_content');
+    </script>
+
+    <script type="text/javascript">
+        $('form[id="actionForm"]').validate({
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
     </script>
 
     <script>

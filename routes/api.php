@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PhotoGalleryAdminController;
 use App\Http\Controllers\Admin\PlaceToVisitAdminController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
+use App\Http\Controllers\Admin\TopAttractionController;
 use App\Http\Controllers\Admin\VideoGalleryAdminController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
 use App\Http\Controllers\Site\FacilitiesController;
@@ -49,6 +50,7 @@ Route::prefix("admin")->group(function(){
     Route::post('place-to-visit/get-data', [PlaceToVisitAdminController::class, 'getData'])->name('api.admin.place.visit.get.data');
     Route::post('photo-gallery/get-data', [PhotoGalleryAdminController::class, 'getData'])->name('api.admin.photo.gallery.get.data');
     Route::post('video-gallery/get-data', [VideoGalleryAdminController::class, 'getData'])->name('api.admin.video.gallery.get.data');
+    Route::post('top-attraction/get-data', [TopAttractionController::class, 'getData'])->name('api.admin.top.attraction.get.data');
 });
 
 Route::prefix("site")->group(function(){

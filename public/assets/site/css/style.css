@@ -2374,3 +2374,313 @@ a {
     z-index: 9;
     margin: 0px auto;
 }
+
+
+.popular-beaches .owl-theme.ghogha-slider .owl-nav {
+    margin: 0px;
+}
+
+
+.popular-beaches .owl-theme.ghogha-slider .owl-nav [class*=owl-] {
+    background: url(../img/arrow-left.png) 50% 50% no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 70px;
+    text-indent: -999px;
+    overflow: hidden;
+    position: absolute;
+    top: 35%;
+    left: -40px;
+}
+
+
+.popular-beaches .owl-theme.ghogha-slider .owl-nav [class*=owl-].owl-next {
+    background: url(../img/arrow-right.png) 50% 50% no-repeat;
+    background-size: contain;
+    left: auto;
+    right: -35px;
+}
+
+.attraction.homi {
+    background: url(../img/bg-home-intraction.png) top center no-repeat;
+    background-size: 100% 100%;
+    padding: 50px 0px;
+}
+
+.attraction.homi h3 {
+    color: #000;
+}
+
+.attraction.homi .attraction-card {
+    background: #fff;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.attraction.homi .attraction-card .down {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.attraction.homi h3,
+.attraction.homi .attraction-card h4,
+.attraction.homi .attraction-card p,
+.attraction.homi .attraction-card h4 span,
+.attraction.homi .attraction-card .read {
+    color: #000;
+}
+
+.attraction.homi .attraction-card {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.attraction.homi .spr {
+    padding: 0px 10px;
+}
+
+.attraction.homi .spr>div {
+    padding: 0px 5px;
+}
+
+.attraction.homi .social img {
+    filter: brightness(0) invert(0);
+}
+
+.placetovisit.homi {
+    background: url(../img/bg-place.png) bottom center no-repeat;
+    background-size: 100% 100%;
+    padding: 120px 0px 250px 0px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.placetovisit.homi {
+
+}
+
+
+.placetovisit.homi .boxcontent {
+    left: -140px;
+    width: 134%;
+    top: 44px;
+}
+
+.placetovisit.homi .boxes {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-left: -7px;
+}
+
+.placetovisit.homi .boxes.f2 {
+    position: absolute;
+    top: -103px;
+    left: 105px;
+    text-align: center;
+}
+
+.placetovisit.homi .boxes.f3 {
+    position: absolute;
+    top: -103px;
+    left: 317px;
+    text-align: center;
+}
+
+.placetovisit.homi .boxes.f4 {
+    position: absolute;
+    bottom: -103px;
+    left: 105px;
+    text-align: center;
+}
+
+.placetovisit.homi .boxes.f5 {
+    position: absolute;
+    bottom: -103px;
+    left: 317px;
+    text-align: center;
+}
+
+
+.placetovisit.homi .boxes .img {
+    max-width: 217px;
+}
+
+
+.placetovisit.homi .boxes:hover .bgs {
+    opacity: 1;
+}
+
+.placetovisit.homi .boxes .bgs {
+    position: absolute;
+    top: 48px;
+    left: 49px;
+    right: 47px;
+    bottom: 48px;
+    background: rgba(100, 64, 17, .48);
+    transform: rotate(-315deg);
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.placetovisit.homi .boxes .bgs span {
+    transform: rotate(-44deg);
+    display: inline-block;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0px 3px 3px #000;
+}
+
+.placetovisit.homi .al {
+    position: absolute;
+    top: -86px;
+    left: 0;
+    width: 100%;
+    height: 180px;
+}
+
+.placetovisit.homi .section-title h2 ,
+.placetovisit.homi .section-title h6{
+    color: #644011;
+}
+
+.placetovisit.homi .infs {
+    background: #644011;
+}
+
+.placetovisit.homi .infs h3,
+.placetovisit.homi .infs p {
+    color: #fff;
+}
+
+.placetovisit.homi .infs p.sm {
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.placetovisit.homi .infs .link {
+    color: #fff;
+    margin-top: 10px;
+    display: inline-block;
+    border-bottom: 1px solid #fff;
+}
+
+.info-common .inner {
+}
+
+.info-common .inner .img figure {
+    min-height: 420px;
+    position: relative;
+}
+
+.info-common .inner .img figure .rate {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.info-common .inner .sinfo {
+    padding-top: 20px;
+}
+
+.info-common .inner .sinfo p {
+    margin-bottom: 35px;
+    color: #363636;
+}
+
+.info-common .inner .sinfo p a {
+    color: #363636;
+}
+
+.info-common .inner .sinfo h3 {
+    color: #000;
+    font-family: "Calibri", sans-serif;
+    font-size: 17px;
+    line-height: 0.5;
+}
+
+
+.info-common .inner .sinfo .mapi {
+    border-radius: 5px;
+    height: 240px !important;
+    width: 300px !important;
+}
+
+.info-common .inner .rts {
+    margin-top: 60px;
+}
+
+.info-common.hotel.tent .nav-tabs {
+    justify-content: start;
+}
+
+.info-common.hotel.tent .nav-tabs li {
+    margin-right: 7px;
+    width: auto;
+}
+
+.info-common.hotel.tent .nav-tabs .nav-link.active {
+    background: #bd6019;
+}
+
+
+.info-common.hotel.tent .nav-tabs .nav-link {
+    background: #ed7e2a;
+    min-width: 240px;
+}
+
+.info-common.hotel.tent .bgs.lorange {
+    background: #ffefde;
+}
+
+
+.info-common.hotel.tent .rati {
+    color: #000;
+    font-weight: bold;
+}
+
+.info-common.hotel.tent .he {
+    min-height: 101px;
+}
+
+section.info-common.hotel #thumbs,
+section.info-common.hotel #thumbs2 {
+    border: 1px solid #a1a1a1;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+section.info-common.hotel #thumbs .current .item,
+section.info-common.hotel #thumbs2 .current .item {
+    opacity: .8;
+}
+
+section.info-common.hotel #thumbs .item,
+section.info-common.hotel #thumbs2 .item {
+    margin-right: 4px;
+}
+
+.info-common .bgs>div.spp {
+    padding: 0px 15px;
+}
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Create | Posts')
+@section('title', 'Create | Top Attractions')
 
 @section('page_link_and_styles')
 @endsection
@@ -12,10 +12,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Post </h1>
+                    <h1>Create Top Attraction </h1>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{{ url('admin/posts') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
+                    <a href="{{ url('admin/top-attraction') }}" type="button" class="btn btn-primary btn-sm">Manage</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -25,7 +25,8 @@
 
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ url('admin/posts/store') }}" method="post" enctype="multipart/form-data" id="actionForm">
+            <form action="{{ url('admin/top-attraction/store') }}" method="post" enctype="multipart/form-data"
+                id="actionForm">
                 @csrf
                 @if (Session::has('error_message'))
                     <div class="alert alert-danger">
@@ -51,12 +52,25 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="english_title">English Title</label>
-                                    <input type="text" class="form-control" name="english_title" id="english_title" required>
+                                    <input type="text" class="form-control" name="english_title" id="english_title"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea class="form-control" rows="10" name="english_content" id="english_content" required></textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Sort Description</label>
+                                    <input type="text" class="form-control" name="english_sort_content"
+                                        id="english_sort_content" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tag Title</label>
+                                    <input type="text" class="form-control" name="english_tag"
+                                        id="english_tag" required>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card card-secondary">
@@ -71,12 +85,25 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="gujarati_title">Gujrati Title</label>
-                                    <input type="text" class="form-control" name="gujarati_title" id="gujarati_title" required>
+                                    <input type="text" class="form-control" name="gujarati_title" id="gujarati_title"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
                                     <textarea class="form-control" rows="10" name="gujarati_content" id="gujarati_content" required></textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Sort Description</label>
+                                    <input type="text" class="form-control" name="gujarati_sort_content"
+                                        id="gujarati_sort_content" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tag Title</label>
+                                    <input type="text" class="form-control" name="gujarati_tag"
+                                        id="gujarati_tag" required>
+                                </div>
+
                             </div>
                         </div>
                         <div class="card card-secondary">
@@ -97,6 +124,18 @@
                                     <label>Description</label>
                                     <textarea class="form-control" rows="10" name="hindi_content" id="hindi_content" required></textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Sort Description</label>
+                                    <input type="text" class="form-control" name="hindi_sort_content"
+                                        id="hindi_sort_content" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tag Title</label>
+                                    <input type="text" class="form-control" name="hindi_tag"
+                                        id="hindi_tag" required>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -123,15 +162,18 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                        <img src="{{ asset('assets/admin/dist/img/no-image-placeholder.jpg') }}" class="img-thumbnail" id="imagePreview"
+                                        <img src="{{ asset('assets/admin/dist/img/no-image-placeholder.jpg') }}"
+                                            class="img-thumbnail" id="imagePreview"
                                             style="height: 100px; width: 100%; object-fit: cover">
-                                        <div style="text-align:center"><a href="javascript:void(0)" id="remove_featured_image" style="color:red; display:none">Remove</a></div>
+                                        <div style="text-align:center"><a href="javascript:void(0)"
+                                                id="remove_featured_image" style="color:red; display:none">Remove</a>
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="card">
+                        {{-- <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Categories</h3>
                                 <div class="card-tools">
@@ -144,7 +186,7 @@
                             <div class="card-body" style="display: block;">
                                 <div class="form-group">
                                     <label>Categories</label>
-                                    <select class="form-control" name="category_id">
+                                    <select class="form-control" name="category_id" id="category_id" required>
                                         <option value="">-- Select--</option>
                                         @foreach ($data['categories'] as $items)
                                             <option value="{{ $items->id }}"> {{ $items->category_name }}</option>
@@ -152,7 +194,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card">
                             <div class="card-body">
                                 <button type="submit" type="button" class="btn btn-block btn-primary">Submit</button>
@@ -185,7 +227,7 @@
         });
     </script>
 
-    <script>
+    <script type="text/javascript">
         $('#featured_image').change(function() {
             var file = this.files[0];
             var reader = new FileReader();
@@ -196,15 +238,16 @@
         });
     </script>
 
-    <script>
-        $("#featured_image").change(function(){
+    <script type="text/javascript">
+        $("#featured_image").change(function() {
             $("#remove_featured_image").show();
         });
-        $("#remove_featured_image").click(function(){
-            $("#imagePreview").attr("src","{{ asset('assets/admin/dist/img/no-image-placeholder.jpg') }}");
+        $("#remove_featured_image").click(function() {
+            $("#imagePreview").attr("src", "{{ asset('assets/admin/dist/img/no-image-placeholder.jpg') }}");
             $("#remove_featured_image").hide();
             $('#featured_image').val('');
         });
     </script>
+
 
 @endsection

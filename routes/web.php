@@ -14,9 +14,11 @@ use App\Http\Controllers\Admin\PhotoGalleryAdminController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\TentController;
 use App\Http\Controllers\Admin\PlaceToVisitAdminController;
+use App\Http\Controllers\Admin\TopAttractionController;
 use App\Http\Controllers\Admin\VideoGalleryAdminController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\BarsAndLiquorShopsController;
+use App\Http\Controllers\Site\ExtraController;
 use App\Http\Controllers\Site\FacilitiesController;
 use App\Http\Controllers\Site\FrontPageController;
 use App\Http\Controllers\Site\HospitalController;
@@ -84,6 +86,7 @@ Route::middleware(['preferred.language'])->group(function(){
         Route::get('facilities/rent-a-bike', [RentBikeController::class, 'index'])->name('site.diu.facilities.rent.a.bike');
         Route::get('facilities/tents', [TentsController::class, 'index'])->name('site.diu.facilities.tent');
         Route::get('facilities/e-bus-schedule', [FacilitiesController::class, 'facilitiesEBusSchedule'])->name('site.diu.facilities.e.bus.schedule');
+        Route::get('content/{slug}/{type}', [ExtraController::class, 'diuContentDetail'])->name('site.diu.content.details');
     });
 });
 
@@ -106,6 +109,8 @@ Route::prefix("admin")->group(function(){
         Route::get('posts/edit/{id}', [PostsController::class, 'edit'])->name('admin.posts.edit');
         Route::post('posts/update', [PostsController::class, 'update'])->name('admin.posts.update');
         Route::get('posts/destroy/{id}', [PostsController::class, 'destroy'])->name('admin.posts.destroy');
+        
+        
 
         // PAGES
         Route::get('pages', [PagesController::class, 'index'])->name('admin.pages.index');
@@ -178,6 +183,14 @@ Route::prefix("admin")->group(function(){
         Route::get('tent/edit/{id}', [TentController::class, 'edit'])->name('admin.tent.edit');
         Route::post('tent/update', [TentController::class, 'update'])->name('admin.tent.update');
         Route::get('tent/destroy/{id}', [TentController::class, 'destroy'])->name('admin.tent.destroy');
+
+        // TOP ATTRACTION
+        Route::get('top-attraction', [TopAttractionController::class, 'index'])->name('admin.top.attraction.index');
+        Route::get('top-attraction/create', [TopAttractionController::class, 'create'])->name('admin.top.attraction.create');
+        Route::post('top-attraction/store', [TopAttractionController::class, 'store'])->name('admin.top.attraction.store');
+        Route::get('top-attraction/edit/{id}', [TopAttractionController::class, 'edit'])->name('admin.top.attraction.edit');
+        Route::post('top-attraction/update', [TopAttractionController::class, 'update'])->name('admin.top.attraction.update');
+        Route::get('top-attraction/destroy/{id}', [TopAttractionController::class, 'destroy'])->name('admin.top.attraction.destroy');
     });
 });
 

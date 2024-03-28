@@ -1,5 +1,3 @@
-axios.defaults.baseURL = window.location.origin+'/api/';
-
 (function($) {
 	'use strict';
 	// Navbar Menu JS
@@ -18,11 +16,11 @@ axios.defaults.baseURL = window.location.origin+'/api/';
 	$(".menu-icon").on('click', function(){
 		$(".menu-icon").toggleClass("active");
 	})
-
+	
 	// $(".menu-icon").on('click', function(){
 	// 	$(".header").toggleClass("active");
 	// })
-
+	
 	// Preloader JS
 	$(window).on('load', function() {
 		$('.preloader').fadeOut();
@@ -36,7 +34,7 @@ axios.defaults.baseURL = window.location.origin+'/api/';
 			mobile: false
 		});
 		wow.init();
-	};
+	};	
 
 	$('.slider-carousel').owlCarousel({
 		margin:10,
@@ -52,7 +50,7 @@ axios.defaults.baseURL = window.location.origin+'/api/';
 		nav:true,
 		items:1
 	});
-
+	
 	$('.banner-slider').owlCarousel({
 		margin:0,
 		loop:false,
@@ -80,7 +78,27 @@ axios.defaults.baseURL = window.location.origin+'/api/';
 		}
 	});
 
+	
+	$('.ghogha-slider').owlCarousel({
+		margin:10,
+		loop:true,
+		nav:true,
+		dots:false,
+		autoplay:true,
+		responsive:{
+			0:{
+				items:1,
+			},
+			600:{
+				items:43
+			},
+			1200:{
+				items:4,
+			}
+		}
+	});
 
+	
 	$(document).scroll(function(e){
 		var scrollTop = $(document).scrollTop();
 		if(scrollTop > 10){
@@ -90,15 +108,13 @@ axios.defaults.baseURL = window.location.origin+'/api/';
 			$('.header').removeClass('fixed').addClass('');
 		}
 	});
-
-
+	
+	
     $("#menu-btn").click(function(){
         $(".side-menu").toggleClass('intro');
     });
     $(".CloseBtn").click(function(){
         $(".side-menu").removeClass('intro');
     });
-
+	
 })(jQuery);
-
-

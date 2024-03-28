@@ -399,6 +399,29 @@ h3 {
     line-height: 37px;
 }
 
+.placetovisit.homi .boxes {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    right:  auto !important;
+    bottom:  auto !important;
+    margin: 10px 0px !important;
+}
+
+.placetovisit.homi .boxcontent {
+    left: 0px;
+    width: 100%;
+    top: 10px;
+}
+
+.info-common .inner .sinfo .mapi {
+    margin-bottom: 20px;
+}
+
+.info-common .inner .img figure {
+    min-height: 350px;
+}
+
 }
 
 
@@ -580,6 +603,56 @@ h3 {
     font-size: 18px;
 }
 
+
+.placetovisit.homi .boxcontent {
+    left: -69px;
+    width: 107%;
+    top: 44px;
+}
+
+
+.placetovisit.homi .boxes .img {
+    max-width: 121px;
+}
+.placetovisit.homi .boxes {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-left: -4px;
+}
+
+.placetovisit.homi .boxes.f2 {
+    top: -58px;
+    left: 58px;
+}
+
+.placetovisit.homi .boxes.f3 {
+    top: -58px;
+    left: 176px;
+}
+
+.placetovisit.homi .boxes.f4 {
+    bottom: -58px;
+    left: 58px;
+}
+
+.placetovisit.homi .boxes.f5 {
+    bottom: -58px;
+    left: 176px;
+}
+
+.placetovisit.homi .boxes .bgs {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+}
+
+.placetovisit.homi .boxes .bgs span {
+    font-size: 10px;
+}
+
 }
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
@@ -621,6 +694,37 @@ h3 {
     line-height: 41px;
     min-width: 68px;
     font-size: 17px;
+}
+
+
+.placetovisit.homi .boxcontent {
+    left: -101px;
+    width: 134%;
+    top: 44px;
+}
+
+.placetovisit.homi .boxes .img {
+    max-width: 188px;
+}
+
+.placetovisit.homi .boxes.f2 {
+    top: -90px;
+    left: 91px;
+}
+
+.placetovisit.homi .boxes.f3 {
+    top: -90px;
+    left: 273px;
+}
+
+.placetovisit.homi .boxes.f4 {
+    bottom: -90px;
+    left: 91px;
+}
+
+.placetovisit.homi .boxes.f5 {
+    bottom: -90px;
+    left: 273px;
 }
 
 }
